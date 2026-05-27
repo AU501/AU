@@ -27,20 +27,13 @@
 }}
 body{font-family:var(--font);background:var(--bg3);min-height:100vh;padding:1.5rem 1rem;color:var(--text)}
 .wrap{max-width:740px;margin:0 auto}
-.api-banner{background:var(--amber-l);border:0.5px solid #EF9F27;border-radius:var(--r-md);padding:.85rem 1rem;margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:10px}
-.api-banner i{font-size:18px;color:var(--amber-d);flex-shrink:0;margin-top:1px}
-.api-banner-text{font-size:13px;color:var(--amber-d);line-height:1.6;flex:1}
-.api-banner input{width:100%;margin-top:6px;padding:.55rem .85rem;border:0.5px solid #EF9F27;border-radius:var(--r-md);font-size:13px;color:var(--text);background:var(--bg);font-family:var(--mono)}
-.api-banner input:focus{outline:none;border-color:var(--amber)}
 .card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--r-lg);padding:1.3rem 1.4rem;margin-bottom:1rem}
 .badge{font-size:11px;padding:2px 9px;border-radius:20px;font-weight:500;display:inline-flex;align-items:center;gap:4px}
 .b-medio{background:var(--amber-l);color:var(--amber-d)}
 .b-fw{background:var(--purple-l);color:var(--purple-d)}
-.ev-lbl{font-size:11px;font-weight:500;color:#534AB7;letter-spacing:.04em;margin-bottom:5px;text-transform:uppercase}
-.ev-box{background:var(--bg2);border-left:3px solid var(--purple);border-radius:0 var(--r-md) var(--r-md) 0;padding:.85rem 1rem;font-size:12.5px;font-family:var(--mono);line-height:1.8;color:var(--text);white-space:pre-wrap;margin-bottom:1rem;overflow-x:auto}
+.ev-lbl{font-size:11px;font-weight:500;color:#534AB7;letter-spacing:.04em;margin-bottom:8px;text-transform:uppercase}
 .tip-box{background:var(--purple-l);border-radius:var(--r-md);padding:.7rem 1rem;margin-bottom:.9rem;font-size:13px;color:var(--purple-d);line-height:1.6}
-.field-lbl{font-size:14px;font-weight:500;color:var(--text);margin-bottom:.35rem;display:block}
-.field-sub{font-size:12px;color:var(--text2);margin-bottom:.55rem;line-height:1.5}
+.hint-box{background:#E6F1FB;border-radius:var(--r-md);padding:.7rem 1rem;margin-bottom:.9rem;font-size:13px;color:#0C447C;line-height:1.6;display:none}
 textarea{width:100%;padding:.75rem .9rem;border:0.5px solid var(--border2);border-radius:var(--r-md);font-size:14px;color:var(--text);background:var(--bg);resize:vertical;line-height:1.6;font-family:var(--font)}
 textarea:focus{outline:none;border-color:var(--purple)}
 textarea:disabled{opacity:.6;cursor:default}
@@ -51,6 +44,8 @@ textarea:disabled{opacity:.6;cursor:default}
 .btn-p:disabled{opacity:.4;cursor:not-allowed}
 .btn-s{padding:.65rem 1.3rem;border-radius:var(--r-md);border:0.5px solid var(--border2);background:var(--bg);color:var(--text2);font-size:14px;cursor:pointer;font-family:var(--font)}
 .btn-s:hover{background:var(--bg2)}
+.btn-hint{padding:.5rem 1rem;border-radius:var(--r-md);border:0.5px solid #534AB7;background:transparent;color:#534AB7;font-size:13px;cursor:pointer;font-family:var(--font)}
+.btn-hint:hover{background:var(--purple-l)}
 .fb-banner{border-radius:var(--r-md);padding:.9rem 1.1rem;margin-bottom:.85rem;display:flex;align-items:center;gap:12px}
 .fb-Excelente{background:var(--green-l);border:0.5px solid #97C459}
 .fb-Buena{background:var(--teal-l);border:0.5px solid #5DCAA5}
@@ -66,95 +61,139 @@ textarea:disabled{opacity:.6;cursor:default}
 .fb-Mejorable .fb-nivel{color:var(--amber-d)} .fb-Insuficiente .fb-nivel{color:var(--red-d)}
 .fb-sub{font-size:12px;color:var(--text2);margin-top:2px}
 .fb-body{font-size:13px;line-height:1.75;color:var(--text);background:var(--bg2);border-radius:var(--r-md);padding:.85rem 1rem;margin-bottom:.85rem}
+.rubric-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--r-lg);padding:1rem 1.1rem;margin-bottom:.85rem}
+.rubric-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:.65rem}
+.rubric-item{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:0.5px solid var(--border);font-size:13px;line-height:1.5}
+.rubric-item:last-child{border-bottom:none}
+.ri-ok{color:var(--green);font-size:16px;flex-shrink:0;margin-top:1px}
+.ri-bad{color:var(--red);font-size:16px;flex-shrink:0;margin-top:1px}
+.ri-lbl{flex:1;color:var(--text)}
+.ri-exp{font-size:12px;color:var(--text2);margin-top:3px;line-height:1.5}
+.errors-card{background:var(--red-l);border:0.5px solid #F09595;border-radius:var(--r-md);padding:.85rem 1rem;margin-bottom:.85rem}
+.errors-title{font-size:13px;font-weight:500;color:var(--red-d);margin-bottom:.5rem;display:flex;align-items:center;gap:6px}
+.error-item{font-size:12px;color:var(--red-d);display:flex;align-items:flex-start;gap:6px;line-height:1.5;margin-bottom:4px}
 .ideal-card{background:var(--bg2);border-radius:var(--r-md);padding:.85rem 1rem;border-left:3px solid var(--purple);margin-bottom:.85rem}
 .ideal-lbl{font-size:11px;font-weight:500;color:#534AB7;text-transform:uppercase;letter-spacing:.03em;margin-bottom:5px}
 .ideal-text{font-size:13px;color:var(--text);line-height:1.7}
-.ldots span{animation:bk 1.2s infinite;display:inline-block}
-.ldots span:nth-child(2){animation-delay:.2s}
-.ldots span:nth-child(3){animation-delay:.4s}
-@keyframes bk{0%,80%,100%{opacity:0}40%{opacity:1}}
-footer{text-align:center;font-size:12px;color:var(--text3);margin-top:2rem;padding-bottom:1rem}
-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1rem}
 th{background:var(--bg3);padding:7px 10px;text-align:left;font-weight:500;border:0.5px solid var(--border2);color:var(--text)}
 td{padding:7px 10px;border:0.5px solid var(--border);color:var(--text)}
 tr:nth-child(even) td{background:var(--bg2)}
+footer{text-align:center;font-size:12px;color:var(--text3);margin-top:2rem;padding-bottom:1rem}
 </style>
 </head>
 <body>
 <div class="wrap">
-
-  <div class="api-banner">
-    <i class="ti ti-key"></i>
-    <div class="api-banner-text">
-      <strong>API Key de Anthropic requerida</strong> para la evaluación con IA.
-      Consíguela gratis en <strong>console.anthropic.com</strong> → API Keys.
-      <input type="password" id="apikey" placeholder="sk-ant-api03-..." autocomplete="off">
-    </div>
+<div class="card">
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.55rem">
+    <span class="badge b-medio">🟡 Riesgo medio</span>
+    <span class="badge b-fw"><i class="ti ti-book" style="font-size:11px"></i> COBIT 2019 APO04</span>
   </div>
-
-  <div class="card">
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.55rem">
-      <span class="badge b-medio">🟡 Riesgo medio</span>
-      <span class="badge b-fw"><i class="ti ti-book" style="font-size:11px"></i> COBIT 2019 APO04</span>
-    </div>
-    <div style="font-size:12px;color:var(--text2);margin-bottom:5px">Gestión de la Innovación · Caso único</div>
-    <div style="font-size:17px;font-weight:500;color:var(--text);margin-bottom:.6rem">Gestión de ideas innovadoras en el Área de TI</div>
-
-    <div style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem">
-      Le asignan auditar la gestión de la innovación, específicamente la creación de un entorno favorable que conduzca a la innovación. El plan estratégico de la organización auditada define la necesidad de innovar para diferenciarse de la competencia y ofrecer productos tecnológicos únicos a sus clientes.<br><br>
-      Usted observa que existe una buena relación entre el Jefe del Área de Innovación de TI y los Socios Empresariales y los Proveedores. Las ideas clasificadas como "innovadoras" se envían al correo del Área de Innovación de TI, accedido únicamente por el Jefe de esa área.<br><br>
-      Usted solicita acceso a ese correo, identifica las 15 ideas generadas en el último año y determina si fueron implementadas. Al consultar al Jefe cómo se determina qué idea se implementa, él indica que es él quien lo decide y documenta, pero <strong>no existen registros que validen esas afirmaciones</strong>.
-    </div>
-
-    <div class="ev-lbl"><i class="ti ti-file-search" style="font-size:12px;vertical-align:-1px;margin-right:4px"></i>Evidencia — Cuadro de ideas recibidas</div>
-    <div class="ev-box"><table>
-<th>No. Idea</th><th>Propuesta por</th><th>Implementada</th>
-<tr><td>1</td><td>Socios Empresariales</td><td>Sí</td></tr>
-<tr><td>2</td><td>Proveedores</td><td>Sí</td></tr>
-<tr><td>3</td><td>Proveedores</td><td>Sí</td></tr>
-<tr><td>4</td><td>Socios Empresariales</td><td>Sí</td></tr>
-<tr><td>5</td><td>Proveedores</td><td>Sí</td></tr>
-<tr><td>6</td><td>Socios Empresariales</td><td>Sí</td></tr>
-<tr><td>7</td><td>Clientes</td><td>No</td></tr>
-<tr><td>8</td><td>Funcionarios</td><td>No</td></tr>
-<tr><td>9</td><td>Socios Empresariales</td><td>Sí</td></tr>
-<tr><td>10</td><td>Clientes</td><td>No</td></tr>
-<tr><td>11</td><td>Proveedores</td><td>Sí</td></tr>
-<tr><td>12</td><td>Clientes</td><td>No</td></tr>
-<tr><td>13</td><td>Funcionarios</td><td>No</td></tr>
-<tr><td>14</td><td>Clientes</td><td>No</td></tr>
-<tr><td>15</td><td>Funcionarios</td><td>No</td></tr>
-</table></div>
-
-    <div class="tip-box">
-      <i class="ti ti-info-circle" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i>
-      <strong>Recuerda:</strong> La condición describe QUÉ se encontró — hechos objetivos, en tiempo pasado, cuantificados, sin causas ni recomendaciones.
-    </div>
-
-    <label class="field-lbl">Redacta la condición del hallazgo:</label>
-    <div class="field-sub">2–4 oraciones · tiempo pasado · solo hechos objetivos y cuantificados basados en la evidencia</div>
-    <textarea id="ta" rows="5" placeholder="Se identificaron / Se verificó que..." oninput="upd(this)"></textarea>
-    <div class="char-row">
-      <span id="cc">0 caracteres</span>
-      <span id="ww">0 palabras</span>
-    </div>
-
-    <div class="arow">
-      <button class="btn-p" id="btn-eval" onclick="evaluar()">Evaluar mi condición</button>
-    </div>
-    <div id="fb"></div>
+  <div style="font-size:12px;color:var(--text2);margin-bottom:5px">Gestión de la Innovación</div>
+  <div style="font-size:17px;font-weight:500;color:var(--text);margin-bottom:.6rem">Gestión de ideas innovadoras en el Área de TI</div>
+  <div style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem">
+    Le asignan auditar la gestión de la innovación, específicamente la creación de un entorno favorable que conduzca a la innovación. El plan estratégico de la organización define la necesidad de innovar para diferenciarse de la competencia y ofrecer productos tecnológicos únicos a sus clientes.<br><br>
+    Las ideas clasificadas como "innovadoras" se envían al correo del Área de Innovación de TI, accedido únicamente por el Jefe de esa área. Usted solicita acceso, identifica las 15 ideas generadas en el último año y determina si fueron implementadas.<br><br>
+    Al consultar al Jefe cómo se decide qué idea se implementa, indica que es él quien lo decide y documenta, pero <strong>no existen registros que validen esas afirmaciones</strong>.
   </div>
-
-  <footer>Auditoría de TI · COBIT 2019 APO04 · Uso educativo</footer>
+  <div class="ev-lbl"><i class="ti ti-file-search" style="font-size:12px;vertical-align:-1px;margin-right:4px"></i>Evidencia — Cuadro de ideas recibidas</div>
+  <table>
+    <tr><th>No. Idea</th><th>Propuesta por</th><th>Implementada</th></tr>
+    <tr><td>1</td><td>Socios Empresariales</td><td>Sí</td></tr>
+    <tr><td>2</td><td>Proveedores</td><td>Sí</td></tr>
+    <tr><td>3</td><td>Proveedores</td><td>Sí</td></tr>
+    <tr><td>4</td><td>Socios Empresariales</td><td>Sí</td></tr>
+    <tr><td>5</td><td>Proveedores</td><td>Sí</td></tr>
+    <tr><td>6</td><td>Socios Empresariales</td><td>Sí</td></tr>
+    <tr><td>7</td><td>Clientes</td><td>No</td></tr>
+    <tr><td>8</td><td>Funcionarios</td><td>No</td></tr>
+    <tr><td>9</td><td>Socios Empresariales</td><td>Sí</td></tr>
+    <tr><td>10</td><td>Clientes</td><td>No</td></tr>
+    <tr><td>11</td><td>Proveedores</td><td>Sí</td></tr>
+    <tr><td>12</td><td>Clientes</td><td>No</td></tr>
+    <tr><td>13</td><td>Funcionarios</td><td>No</td></tr>
+    <tr><td>14</td><td>Clientes</td><td>No</td></tr>
+    <tr><td>15</td><td>Funcionarios</td><td>No</td></tr>
+  </table>
+  <div class="tip-box">
+    <i class="ti ti-info-circle" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i>
+    <strong>Recuerda:</strong> La condición describe QUÉ se encontró — hechos objetivos, en tiempo pasado, cuantificados, sin causas ni recomendaciones.
+  </div>
+  <div class="hint-box" id="hint-box">
+    <i class="ti ti-bulb" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i>
+    <strong>Pista:</strong> Analiza el patrón: ¿qué tienen en común las ideas implementadas? ¿Y las no implementadas? Cuenta cuántas son de cada grupo. Además menciona qué pasa con los criterios de selección.
+  </div>
+  <label style="font-size:14px;font-weight:500;color:var(--text);display:block;margin-bottom:.35rem">Redacta la condición del hallazgo:</label>
+  <div style="font-size:12px;color:var(--text2);margin-bottom:.55rem">2–4 oraciones · tiempo pasado · solo hechos objetivos y cuantificados</div>
+  <textarea id="ta" rows="5" placeholder="Se identificaron / Se verificó que..." oninput="upd(this)"></textarea>
+  <div class="char-row">
+    <span id="cc">0 caracteres</span>
+    <span id="ww">0 palabras</span>
+  </div>
+  <div class="arow">
+    <button class="btn-hint" onclick="mostrarPista()"><i class="ti ti-bulb" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>Pista</button>
+    <button class="btn-p" id="btn-eval" onclick="evaluar()">Evaluar respuesta</button>
+  </div>
+  <div id="fb"></div>
+</div>
+<footer>Auditoría de TI · COBIT 2019 APO04 · Evaluación automática · Uso educativo</footer>
 </div>
 
 <script>
 let intentos = 0;
-const IDEAL = 'Se verificó que de las 15 ideas innovadoras recibidas en el período analizado, el 100% de las ideas propuestas por Socios Empresariales (4) y Proveedores (4) fueron implementadas, mientras que el 100% de las ideas propuestas por Clientes (5) y Funcionarios (3) no fueron implementadas. Asimismo, se determinó que el Jefe del Área de Innovación de TI es el único con acceso al correo receptor de ideas y el único que decide cuáles se implementan, sin que existan registros ni criterios documentados que respalden esas decisiones.';
+let hizoIntento = false;
+
+const IDEAL = 'Se verificó que de las 15 ideas innovadoras recibidas en el período analizado, el 100% de las propuestas por Socios Empresariales (4 de 4) y Proveedores (4 de 4) fueron implementadas, mientras que el 100% de las propuestas por Clientes (5 de 5) y Funcionarios (3 de 3) no fueron implementadas. Asimismo, se determinó que el Jefe del Área de Innovación de TI es el único con acceso al correo receptor de ideas y el único que decide cuáles se implementan, sin que existan registros ni criterios documentados que respalden dichas decisiones.';
+
+const RUBRICA = [
+  {
+    lbl: 'Identifica el patrón de implementación (externas vs internas)',
+    exp: 'Debe mencionar que las ideas de externos (Socios/Proveedores) fueron implementadas y las de internos (Clientes/Funcionarios) no, o viceversa.',
+    check: [['socio','proveedor','externo'],['cliente','funcionario','interno','no implement','ninguna']],
+    mode: 'all_groups',
+    peso: 25
+  },
+  {
+    lbl: 'Cuantifica los datos de la evidencia',
+    exp: 'Debe incluir números concretos: 15 ideas, 8 implementadas, 7 no implementadas, porcentajes o cantidades por grupo.',
+    check: [['15','ocho','8 ideas','4 de 4','7 no','100%','0%','ninguna de las']],
+    mode: 'any',
+    peso: 25
+  },
+  {
+    lbl: 'Menciona la ausencia de registros o criterios documentados',
+    exp: 'Debe indicar que no existen registros, criterios documentados o que el proceso no está formalizado.',
+    check: [['no exist','sin registro','sin criterio','no hay registro','no se document','ausencia','criterios document','no document']],
+    mode: 'any',
+    peso: 25
+  },
+  {
+    lbl: 'Usa lenguaje en tiempo pasado',
+    exp: '"Se verificó", "se identificaron", "se determinó". Sin presente ("hay", "existe", "tienen").',
+    check: [['se verific','se identific','se determin','se encontr','se constató','se constato','se observ']],
+    mode: 'any',
+    peso: 15
+  },
+  {
+    lbl: 'Solo hechos — sin causas ni recomendaciones',
+    exp: 'No debe incluir "porque", "debido a", "se recomienda", "debe", "debería".',
+    check: [['porque','debido a','se recomienda','debe ','debería','se sugiere','falta de']],
+    mode: 'absent',
+    peso: 10
+  }
+];
+
+const ERRORES_COMUNES = [
+  {tokens:['porque','debido a','ya que','puesto que'], msg:'Incluiste una causa ("porque / debido a"). La causa va en otro componente del hallazgo.'},
+  {tokens:['se recomienda','se sugiere','debe ','debería','hay que'], msg:'Incluiste una recomendación. Las acciones correctivas van en el componente "recomendación".'},
+  {tokens:['podría','es posible que','tal vez','quizás'], msg:'Usaste lenguaje especulativo. La condición solo describe hechos confirmados por la evidencia.'},
+  {tokens:['varios','algunos','muchos','pocos','frecuentemente'], msg:'Usaste lenguaje vago. Reemplaza con datos concretos de la evidencia.'},
+  {tokens:['hay ','existe ','tienen acceso','tienen ideas'], msg:'Usaste tiempo presente. La condición debe estar en pasado: "se identificaron", "se verificó".'},
+  {tokens:['grave','crítico','preocupante','inaceptable','inadecuado'], msg:'Incluiste un juicio de valor. La condición es objetiva, sin adjetivos valorativos.'}
+];
 
 function $(id){return document.getElementById(id);}
 function wc(t){return t.split(/\s+/).filter(w=>w).length;}
-function getKey(){return ($('apikey')||{value:''}).value.trim();}
 
 function upd(ta){
   const v=ta.value;
@@ -162,109 +201,125 @@ function upd(ta){
   const ww=$('ww'); if(ww) ww.textContent=wc(v)+' palabras';
 }
 
-async function evaluar(){
+function mostrarPista(){
+  const h=$('hint-box');
+  if(h) h.style.display='block';
+}
+
+function evalRubrica(text){
+  const lower=text.toLowerCase();
+  return RUBRICA.map(r=>{
+    let pass=false;
+    if(r.mode==='absent'){
+      pass=!r.check[0].some(k=>lower.includes(k));
+    } else if(r.mode==='all_groups'){
+      pass=r.check.every(group=>group.some(k=>lower.includes(k)));
+    } else {
+      pass=r.check[0].some(k=>lower.includes(k));
+    }
+    return{...r,pass};
+  });
+}
+
+function calcScore(res){
+  const total=res.reduce((a,r)=>a+r.peso,0);
+  const earned=res.filter(r=>r.pass).reduce((a,r)=>a+r.peso,0);
+  return Math.round(earned/total*100);
+}
+
+function detectarErrores(text){
+  const lower=text.toLowerCase();
+  return ERRORES_COMUNES.filter(e=>e.tokens.some(t=>lower.includes(t)));
+}
+
+function getLevel(score){
+  if(score>=85) return 'Excelente';
+  if(score>=65) return 'Buena';
+  if(score>=40) return 'Mejorable';
+  return 'Insuficiente';
+}
+
+function getIcon(lvl){
+  return lvl==='Excelente'?'ti-award':lvl==='Buena'?'ti-circle-check':lvl==='Mejorable'?'ti-alert-triangle':'ti-circle-x';
+}
+
+function getFeedbackText(score, rubRes, errors){
+  const passed=rubRes.filter(r=>r.pass);
+  const failed=rubRes.filter(r=>!r.pass);
+  let lines=[];
+  if(score>=85){
+    lines.push('Tu condición cumple con los criterios formales de auditoría. Está cuantificada, identifica el patrón clave de la evidencia y usa lenguaje profesional en tiempo pasado.');
+  } else if(score>=65){
+    lines.push('Tu condición tiene una base sólida pero requiere ajustes para ser formalmente correcta.');
+    if(failed.length) lines.push('Criterios pendientes: '+failed.map(r=>r.lbl.toLowerCase()).join('; ')+'.');
+  } else if(score>=40){
+    lines.push('Tu condición incluye algunos elementos correctos, pero tiene brechas significativas.');
+    if(failed.length) lines.push('Lo que falta: '+failed.map(r=>r.lbl.toLowerCase()).join('; ')+'.');
+  } else {
+    lines.push('La redacción aún no cumple los criterios mínimos de una condición formal de auditoría.');
+    lines.push('Recuerda: la condición solo describe hechos objetivos, cuantificados, en tiempo pasado, basados en la evidencia.');
+  }
+  if(errors.length>0&&score<85) lines.push('Además se detectaron errores de redacción que debes corregir.');
+  return lines.join(' ');
+}
+
+function evaluar(){
   const ans=($('ta')||{value:''}).value.trim();
   if(ans.length<15){
     const ta=$('ta');
     if(ta){ta.style.borderColor='#E24B4A';setTimeout(()=>ta.style.borderColor='',1500);}
     return;
   }
-  const key=getKey();
-  if(!key){alert('Ingresa tu API key de Anthropic en el campo de arriba.');return;}
-
   intentos++;
-  const btn=$('btn-eval');
-  if(btn){btn.disabled=true;btn.innerHTML='<span class="ldots">Evaluando<span>.</span><span>.</span><span>.</span></span>';}
   const ta=$('ta'); if(ta) ta.disabled=true;
+  const btn=$('btn-eval'); if(btn) btn.disabled=true;
 
-  const prompt=`Eres un auditor senior de TI evaluando la CONDICIÓN de un hallazgo redactada por un estudiante de auditoría informática.
+  const rubRes=evalRubrica(ans);
+  const score=calcScore(rubRes);
+  const errors=detectarErrores(ans);
+  const lvl=getLevel(score);
+  const icon=getIcon(lvl);
+  const text=getFeedbackText(score,rubRes,errors);
+  const mostrarIdeal=score<65;
 
-CASO: Gestión de ideas innovadoras en el Área de TI
-DOMINIO: Gestión de la Innovación
-MARCO: COBIT 2019 APO04
-
-CONTEXTO:
-Se audita la gestión de la innovación en una organización. Las ideas innovadoras se envían al correo del Área de Innovación de TI, accedido únicamente por el Jefe del área. Se identificaron 15 ideas del último año. Al consultar cómo se decide qué ideas se implementan, el Jefe indica que él lo decide y documenta, pero no existen registros que validen esas afirmaciones.
-
-EVIDENCIA:
-Ideas 1,4,6,9 propuestas por Socios Empresariales: todas implementadas (4/4 = 100%)
-Ideas 2,3,5,11 propuestas por Proveedores: todas implementadas (4/4 = 100%)
-Ideas 7,10,12,14 propuestas por Clientes: ninguna implementada (0/5 = 0%)
-Ideas 8,13,15 propuestas por Funcionarios: ninguna implementada (0/3 = 0%)
-Total: 8 implementadas, 7 no implementadas de 15 ideas.
-No existen registros ni criterios documentados para la selección de ideas.
-
-CONDICIÓN IDEAL DEL PROFESOR:
-"${IDEAL}"
-
-CONDICIÓN DEL ESTUDIANTE:
-"${ans}"
-
-Evalúa con estos criterios:
-1. ¿Describe hechos objetivos basados en la evidencia?
-2. ¿Está en tiempo pasado?
-3. ¿Está cuantificada con datos de la evidencia?
-4. ¿Menciona el patrón clave (ideas de externos implementadas vs internas no implementadas)?
-5. ¿Menciona la ausencia de registros o criterios documentados?
-6. ¿Evita incluir causas, efectos o recomendaciones?
-
-Niveles:
-- Excelente: cumple todos, lenguaje profesional
-- Buena: cumple mayoría, ajustes menores
-- Mejorable: cumple algunos, errores significativos
-- Insuficiente: no cumple criterios básicos
-
-Responde SOLO con este JSON sin markdown:
-{"nivel":"Excelente|Buena|Mejorable|Insuficiente","texto":"retroalimentación de 3-5 oraciones específicas usando los datos de la evidencia","mostrarIdeal":true|false}
-
-mostrarIdeal=true si nivel es Mejorable o Insuficiente. En español formal.`;
-
-  try{
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'x-api-key':key,
-        'anthropic-version':'2023-06-01',
-        'anthropic-dangerous-direct-browser-access':'true'
-      },
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
-    });
-    const data=await resp.json();
-    if(data.error) throw new Error(data.error.message);
-    const raw=data.content?.map(b=>b.text||'').join('').trim()||'{}';
-    const fb=JSON.parse(raw.replace(/```json|```/g,'').trim());
-    mostrarFeedback(fb);
-  }catch(e){
-    mostrarFeedback({
-      nivel:'Mejorable',
-      texto:'No se pudo conectar con el evaluador: '+e.message+'. Verifica tu API key e intenta de nuevo.',
-      mostrarIdeal:false
-    });
-    if(ta) ta.disabled=false;
-    if(btn){btn.disabled=false;btn.textContent='Evaluar mi condición';}
+  let errHTML='';
+  if(errors.length>0){
+    errHTML=`<div class="errors-card">
+      <div class="errors-title"><i class="ti ti-alert-triangle"></i>Errores de redacción detectados</div>
+      ${errors.map(e=>`<div class="error-item"><i class="ti ti-point" style="font-size:14px;flex-shrink:0"></i><span>${e.msg}</span></div>`).join('')}
+    </div>`;
   }
-}
 
-function mostrarFeedback(fb){
-  const lvl=fb.nivel;
-  const icon=lvl==='Excelente'?'ti-award':lvl==='Buena'?'ti-circle-check':lvl==='Mejorable'?'ti-alert-triangle':'ti-circle-x';
-  const fbDiv=$('fb');
-  fbDiv.innerHTML=`
+  let idealHTML='';
+  if(mostrarIdeal){
+    idealHTML=`<div class="ideal-card">
+      <div class="ideal-lbl">Condición de referencia</div>
+      <div class="ideal-text">${IDEAL}</div>
+    </div>`;
+  }
+
+  $('fb').innerHTML=`
     <div style="margin-top:1rem">
       <div class="fb-banner fb-${lvl}">
         <div class="fb-ic"><i class="ti ${icon}"></i></div>
         <div>
           <div class="fb-nivel">${lvl}</div>
-          <div class="fb-sub">Intento ${intentos}</div>
+          <div class="fb-sub">${score}% de criterios cumplidos · Intento ${intentos}</div>
         </div>
       </div>
-      <div class="fb-body">${(fb.texto||'').replace(/\n/g,'<br>')}</div>
-      ${fb.mostrarIdeal?`
-      <div class="ideal-card">
-        <div class="ideal-lbl">Condición de referencia</div>
-        <div class="ideal-text">${IDEAL}</div>
-      </div>`:''}
+      <div class="fb-body">${text}</div>
+      <div class="rubric-card">
+        <div class="rubric-title">Evaluación por criterio</div>
+        ${rubRes.map(r=>`<div class="rubric-item">
+          <i class="ti ${r.pass?'ti-circle-check ri-ok':'ti-circle-x ri-bad'}"></i>
+          <div>
+            <div class="ri-lbl">${r.lbl}</div>
+            ${!r.pass?`<div class="ri-exp">${r.exp}</div>`:''}
+          </div>
+        </div>`).join('')}
+      </div>
+      ${errHTML}
+      ${idealHTML}
       ${lvl!=='Excelente'?`<div class="arow"><button class="btn-s" onclick="reintentar()">
         <i class="ti ti-refresh" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>Intentar de nuevo
       </button></div>`:''}
@@ -273,7 +328,7 @@ function mostrarFeedback(fb){
 
 function reintentar(){
   const ta=$('ta'); if(ta){ta.disabled=false;ta.value='';}
-  const btn=$('btn-eval'); if(btn){btn.disabled=false;btn.textContent='Evaluar mi condición';}
+  const btn=$('btn-eval'); if(btn) btn.disabled=false;
   const cc=$('cc'); if(cc) cc.textContent='0 caracteres';
   const ww=$('ww'); if(ww) ww.textContent='0 palabras';
   $('fb').innerHTML='';
