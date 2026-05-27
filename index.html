@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evaluador de Condición — Auditoría de TI</title>
+<title>Hallazgo de Auditoría — APO04 Innovación</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -16,9 +16,9 @@
   --amber-l:#FAEEDA;--amber:#854F0B;--amber-d:#633806;
   --red-l:#FCEBEB;--red:#A32D2D;--red-d:#791F1F;
   --teal-l:#E1F5EE;--teal:#0F6E56;
+  --blue-l:#E6F1FB;--blue-d:#0C447C;
   --r-md:8px;--r-lg:12px;
   --font:system-ui,-apple-system,sans-serif;
-  --mono:'Courier New',monospace;
 }
 @media(prefers-color-scheme:dark){:root{
   --bg:#1c1c1a;--bg2:#242420;--bg3:#2a2a26;
@@ -27,17 +27,46 @@
 }}
 body{font-family:var(--font);background:var(--bg3);min-height:100vh;padding:1.5rem 1rem;color:var(--text)}
 .wrap{max-width:740px;margin:0 auto}
+
+/* progress */
+.progress-wrap{margin-bottom:1.25rem}
+.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:6px}
+.progress-bar{background:var(--bg2);border-radius:20px;height:6px}
+.progress-fill{height:6px;border-radius:20px;background:var(--purple);transition:width .4s}
+.steps-row{display:flex;gap:8px;margin-top:8px}
+.step-pill{flex:1;text-align:center;font-size:11px;padding:4px 6px;border-radius:20px;border:0.5px solid var(--border)}
+.step-pill.done{background:var(--green-l);border-color:var(--green);color:var(--green-d)}
+.step-pill.active{background:var(--purple-l);border-color:var(--purple);color:var(--purple-d);font-weight:500}
+.step-pill.pending{background:var(--bg2);color:var(--text3)}
+
+/* card */
 .card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--r-lg);padding:1.3rem 1.4rem;margin-bottom:1rem}
 .badge{font-size:11px;padding:2px 9px;border-radius:20px;font-weight:500;display:inline-flex;align-items:center;gap:4px}
 .b-medio{background:var(--amber-l);color:var(--amber-d)}
 .b-fw{background:var(--purple-l);color:var(--purple-d)}
+
+/* evidence */
 .ev-lbl{font-size:11px;font-weight:500;color:#534AB7;letter-spacing:.04em;margin-bottom:8px;text-transform:uppercase}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1rem}
+th{background:var(--bg3);padding:7px 10px;text-align:left;font-weight:500;border:0.5px solid var(--border2);color:var(--text)}
+td{padding:7px 10px;border:0.5px solid var(--border);color:var(--text)}
+tr:nth-child(even) td{background:var(--bg2)}
+
+/* entrevista box */
+.entrevista-box{background:var(--blue-l);border-left:3px solid #378ADD;border-radius:0 var(--r-md) var(--r-md) 0;padding:.85rem 1rem;margin-bottom:1rem;font-size:13px;color:var(--text);line-height:1.7}
+.entrevista-lbl{font-size:11px;font-weight:500;color:#185FA5;letter-spacing:.04em;margin-bottom:6px;text-transform:uppercase}
+
+/* tip */
 .tip-box{background:var(--purple-l);border-radius:var(--r-md);padding:.7rem 1rem;margin-bottom:.9rem;font-size:13px;color:var(--purple-d);line-height:1.6}
-.hint-box{background:#E6F1FB;border-radius:var(--r-md);padding:.7rem 1rem;margin-bottom:.9rem;font-size:13px;color:#0C447C;line-height:1.6;display:none}
+.hint-box{background:var(--blue-l);border-radius:var(--r-md);padding:.7rem 1rem;margin-bottom:.9rem;font-size:13px;color:var(--blue-d);line-height:1.6;display:none}
+
+/* textarea */
 textarea{width:100%;padding:.75rem .9rem;border:0.5px solid var(--border2);border-radius:var(--r-md);font-size:14px;color:var(--text);background:var(--bg);resize:vertical;line-height:1.6;font-family:var(--font)}
 textarea:focus{outline:none;border-color:var(--purple)}
 textarea:disabled{opacity:.6;cursor:default}
 .char-row{display:flex;justify-content:space-between;font-size:12px;color:var(--text3);margin-top:4px;margin-bottom:.75rem}
+
+/* buttons */
 .arow{display:flex;gap:8px;flex-wrap:wrap;margin-top:.9rem}
 .btn-p{padding:.65rem 1.3rem;border-radius:var(--r-md);border:0.5px solid var(--purple);background:var(--purple-l);color:var(--purple-d);font-size:14px;font-weight:500;cursor:pointer;font-family:var(--font)}
 .btn-p:hover{background:#CECBF6}
@@ -46,6 +75,8 @@ textarea:disabled{opacity:.6;cursor:default}
 .btn-s:hover{background:var(--bg2)}
 .btn-hint{padding:.5rem 1rem;border-radius:var(--r-md);border:0.5px solid #534AB7;background:transparent;color:#534AB7;font-size:13px;cursor:pointer;font-family:var(--font)}
 .btn-hint:hover{background:var(--purple-l)}
+
+/* feedback */
 .fb-banner{border-radius:var(--r-md);padding:.9rem 1.1rem;margin-bottom:.85rem;display:flex;align-items:center;gap:12px}
 .fb-Excelente{background:var(--green-l);border:0.5px solid #97C459}
 .fb-Buena{background:var(--teal-l);border:0.5px solid #5DCAA5}
@@ -69,173 +100,153 @@ textarea:disabled{opacity:.6;cursor:default}
 .ri-bad{color:var(--red);font-size:16px;flex-shrink:0;margin-top:1px}
 .ri-lbl{flex:1;color:var(--text)}
 .ri-exp{font-size:12px;color:var(--text2);margin-top:3px;line-height:1.5}
-.errors-card{background:var(--red-l);border:0.5px solid #F09595;border-radius:var(--r-md);padding:.85rem 1rem;margin-bottom:.85rem}
-.errors-title{font-size:13px;font-weight:500;color:var(--red-d);margin-bottom:.5rem;display:flex;align-items:center;gap:6px}
-.error-item{font-size:12px;color:var(--red-d);display:flex;align-items:flex-start;gap:6px;line-height:1.5;margin-bottom:4px}
 .ideal-card{background:var(--bg2);border-radius:var(--r-md);padding:.85rem 1rem;border-left:3px solid var(--purple);margin-bottom:.85rem}
 .ideal-lbl{font-size:11px;font-weight:500;color:#534AB7;text-transform:uppercase;letter-spacing:.03em;margin-bottom:5px}
 .ideal-text{font-size:13px;color:var(--text);line-height:1.7}
-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1rem}
-th{background:var(--bg3);padding:7px 10px;text-align:left;font-weight:500;border:0.5px solid var(--border2);color:var(--text)}
-td{padding:7px 10px;border:0.5px solid var(--border);color:var(--text)}
-tr:nth-child(even) td{background:var(--bg2)}
+
+/* resumen final */
+.resumen-item{background:var(--bg2);border-radius:var(--r-md);padding:.85rem 1rem;margin-bottom:.75rem;border-left:3px solid var(--purple)}
+.resumen-lbl{font-size:11px;font-weight:500;color:#534AB7;text-transform:uppercase;letter-spacing:.03em;margin-bottom:5px}
+.resumen-text{font-size:13px;color:var(--text);line-height:1.7}
+.score-grande{text-align:center;padding:1.5rem 0}
+.score-num{font-size:52px;font-weight:500;color:var(--text)}
+.score-sub{font-size:14px;color:var(--text2);margin-bottom:.75rem}
+
 footer{text-align:center;font-size:12px;color:var(--text3);margin-top:2rem;padding-bottom:1rem}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="card">
-  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.55rem">
-    <span class="badge b-medio">🟡 Riesgo medio</span>
-    <span class="badge b-fw"><i class="ti ti-book" style="font-size:11px"></i> COBIT 2019 APO04</span>
+
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span id="prog-label">Paso 1 de 2</span>
+    <span id="prog-pct">0%</span>
   </div>
-  <div style="font-size:12px;color:var(--text2);margin-bottom:5px">Gestión de la Innovación</div>
-  <div style="font-size:17px;font-weight:500;color:var(--text);margin-bottom:.6rem">Gestión de ideas innovadoras en el Área de TI</div>
-  <div style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem">
-    Le asignan auditar la gestión de la innovación, específicamente la creación de un entorno favorable que conduzca a la innovación. El plan estratégico de la organización define la necesidad de innovar para diferenciarse de la competencia y ofrecer productos tecnológicos únicos a sus clientes.<br><br>
-    Las ideas clasificadas como "innovadoras" se envían al correo del Área de Innovación de TI, accedido únicamente por el Jefe de esa área. Usted solicita acceso, identifica las 15 ideas generadas en el último año y determina si fueron implementadas.<br><br>
-    Al consultar al Jefe cómo se decide qué idea se implementa, indica que es él quien lo decide y documenta, pero <strong>no existen registros que validen esas afirmaciones</strong>.
+  <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+  <div class="steps-row">
+    <div class="step-pill active" id="pill-1">1 · Condición</div>
+    <div class="step-pill pending" id="pill-2">2 · Causa</div>
   </div>
-  <div class="ev-lbl"><i class="ti ti-file-search" style="font-size:12px;vertical-align:-1px;margin-right:4px"></i>Evidencia — Cuadro de ideas recibidas</div>
-  <table>
-    <tr><th>No. Idea</th><th>Propuesta por</th><th>Implementada</th></tr>
-    <tr><td>1</td><td>Socios Empresariales</td><td>Sí</td></tr>
-    <tr><td>2</td><td>Proveedores</td><td>Sí</td></tr>
-    <tr><td>3</td><td>Proveedores</td><td>Sí</td></tr>
-    <tr><td>4</td><td>Socios Empresariales</td><td>Sí</td></tr>
-    <tr><td>5</td><td>Proveedores</td><td>Sí</td></tr>
-    <tr><td>6</td><td>Socios Empresariales</td><td>Sí</td></tr>
-    <tr><td>7</td><td>Clientes</td><td>No</td></tr>
-    <tr><td>8</td><td>Funcionarios</td><td>No</td></tr>
-    <tr><td>9</td><td>Socios Empresariales</td><td>Sí</td></tr>
-    <tr><td>10</td><td>Clientes</td><td>No</td></tr>
-    <tr><td>11</td><td>Proveedores</td><td>Sí</td></tr>
-    <tr><td>12</td><td>Clientes</td><td>No</td></tr>
-    <tr><td>13</td><td>Funcionarios</td><td>No</td></tr>
-    <tr><td>14</td><td>Clientes</td><td>No</td></tr>
-    <tr><td>15</td><td>Funcionarios</td><td>No</td></tr>
-  </table>
-  <div class="tip-box">
-    <i class="ti ti-info-circle" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i>
-    <strong>Recuerda:</strong> La condición describe QUÉ se encontró — hechos objetivos, en tiempo pasado, cuantificados, sin causas ni recomendaciones.
-  </div>
-  <div class="hint-box" id="hint-box">
-    <i class="ti ti-bulb" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i>
-    <strong>Pista:</strong> Analiza el patrón: ¿qué tienen en común las ideas implementadas? ¿Y las no implementadas? Cuenta cuántas son de cada grupo. Además menciona qué pasa con los criterios de selección.
-  </div>
-  <label style="font-size:14px;font-weight:500;color:var(--text);display:block;margin-bottom:.35rem">Redacta la condición del hallazgo:</label>
-  <div style="font-size:12px;color:var(--text2);margin-bottom:.55rem">2–4 oraciones · tiempo pasado · solo hechos objetivos y cuantificados</div>
-  <textarea id="ta" rows="5" placeholder="Se identificaron / Se verificó que..." oninput="upd(this)"></textarea>
-  <div class="char-row">
-    <span id="cc">0 caracteres</span>
-    <span id="ww">0 palabras</span>
-  </div>
-  <div class="arow">
-    <button class="btn-hint" onclick="mostrarPista()"><i class="ti ti-bulb" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>Pista</button>
-    <button class="btn-p" id="btn-eval" onclick="evaluar()">Evaluar respuesta</button>
-  </div>
-  <div id="fb"></div>
 </div>
-<footer>Auditoría de TI · COBIT 2019 APO04 · Evaluación automática · Uso educativo</footer>
+
+<div id="main"></div>
+
+<footer>Auditoría de TI · COBIT 2019 APO04 · Uso educativo</footer>
 </div>
 
 <script>
-let intentos = 0;
-let hizoIntento = false;
+let fase = 1;
+let intentos1 = 0, intentos2 = 0;
+let score1 = null, score2 = null;
+let respuesta1 = '', respuesta2 = '';
 
-const IDEAL = 'Se verificó que de las 15 ideas innovadoras recibidas en el período analizado, el 100% de las propuestas por Socios Empresariales (4 de 4) y Proveedores (4 de 4) fueron implementadas, mientras que el 100% de las propuestas por Clientes (5 de 5) y Funcionarios (3 de 3) no fueron implementadas. Asimismo, se determinó que el Jefe del Área de Innovación de TI es el único con acceso al correo receptor de ideas y el único que decide cuáles se implementan, sin que existan registros ni criterios documentados que respalden dichas decisiones.';
+const IDEAL_CONDICION = 'Se verificó que de las 15 ideas innovadoras recibidas en el período analizado, el 100% de las propuestas por Socios Empresariales (4 de 4) y Proveedores (4 de 4) fueron implementadas, mientras que el 100% de las propuestas por Clientes (5 de 5) y Funcionarios (3 de 3) no fueron implementadas, sin que exista evidencia de criterios objetivos que fundamenten dichas decisiones de implementación.';
 
-const RUBRICA = [
+const IDEAL_CAUSA = 'El proceso de selección e implementación de ideas innovadoras recae de forma exclusiva en el Jefe del Área de Innovación de TI, quien además es el único con acceso al correo receptor de ideas, sin que existan procedimientos formalizados, criterios documentados ni registros que respalden o validen las decisiones tomadas, lo que impide la trazabilidad y supervisión del proceso.';
+
+const RUBRICA_CONDICION = [
   {
-    lbl: 'Identifica el patrón de implementación (externas vs internas)',
-    exp: 'Debe mencionar que las ideas de externos (Socios/Proveedores) fueron implementadas y las de internos (Clientes/Funcionarios) no, o viceversa.',
-    check: [['socio','proveedor','externo'],['cliente','funcionario','interno','no implement','ninguna']],
-    mode: 'all_groups',
-    peso: 25
+    lbl: 'Identifica el patrón: externas implementadas vs internas no implementadas',
+    exp: 'Debe señalar que ideas de Socios/Proveedores fueron implementadas y las de Clientes/Funcionarios no, o viceversa.',
+    check: [['socio','proveedor','externo'],['cliente','funcionario','interno','no implement','ninguna de']],
+    mode: 'all_groups', peso: 30
   },
   {
-    lbl: 'Cuantifica los datos de la evidencia',
-    exp: 'Debe incluir números concretos: 15 ideas, 8 implementadas, 7 no implementadas, porcentajes o cantidades por grupo.',
-    check: [['15','ocho','8 ideas','4 de 4','7 no','100%','0%','ninguna de las']],
-    mode: 'any',
-    peso: 25
-  },
-  {
-    lbl: 'Menciona la ausencia de registros o criterios documentados',
-    exp: 'Debe indicar que no existen registros, criterios documentados o que el proceso no está formalizado.',
-    check: [['no exist','sin registro','sin criterio','no hay registro','no se document','ausencia','criterios document','no document']],
-    mode: 'any',
-    peso: 25
+    lbl: 'Cuantifica los datos (números o porcentajes de la evidencia)',
+    exp: 'Debe incluir cifras: 15 ideas, 8 implementadas, 7 no, porcentajes, o cantidades por grupo (4 de 4, 5 de 5).',
+    check: [['15','ocho','8 idea','4 de 4','7 no','100%','0%','ninguna de las','cinco','cuatro']],
+    mode: 'any', peso: 25
   },
   {
     lbl: 'Usa lenguaje en tiempo pasado',
     exp: '"Se verificó", "se identificaron", "se determinó". Sin presente ("hay", "existe", "tienen").',
     check: [['se verific','se identific','se determin','se encontr','se constató','se constato','se observ']],
-    mode: 'any',
-    peso: 15
+    mode: 'any', peso: 20
   },
   {
-    lbl: 'Solo hechos — sin causas ni recomendaciones',
-    exp: 'No debe incluir "porque", "debido a", "se recomienda", "debe", "debería".',
-    check: [['porque','debido a','se recomienda','debe ','debería','se sugiere','falta de']],
-    mode: 'absent',
-    peso: 10
+    lbl: 'No incluye la causa (entrevista con el Jefe, registros, criterios)',
+    exp: 'La condición NO debe mencionar al Jefe, los registros inexistentes ni los criterios de selección — eso es la causa.',
+    check: [['jefe','registros','criterios','documenta','acceso al correo','decide él','él decide','él quien']],
+    mode: 'absent', peso: 25
+  }
+];
+
+const RUBRICA_CAUSA = [
+  {
+    lbl: 'Identifica que el Jefe es el único que decide',
+    exp: 'Debe mencionar que la decisión recae exclusivamente en el Jefe del Área de Innovación de TI.',
+    check: [['jefe','único','unicamente','únicamente','solo él','él decide','él quien','recae en']],
+    mode: 'any', peso: 30
+  },
+  {
+    lbl: 'Menciona la ausencia de criterios documentados o procedimientos',
+    exp: 'Debe indicar que no existen criterios, procedimientos formalizados o registros que respalden las decisiones.',
+    check: [['no exist','sin criterio','sin procedimiento','sin registro','no hay criterio','no document','ausencia','criterios document','no formali']],
+    mode: 'any', peso: 35
+  },
+  {
+    lbl: 'Menciona el acceso exclusivo al correo como factor',
+    exp: 'El acceso exclusivo al correo por parte del Jefe es parte de la causa raíz del control débil.',
+    check: [['correo','acceso','único acceso','solo acceso','accedido únicamente','accedido por el jefe']],
+    mode: 'any', peso: 20
+  },
+  {
+    lbl: 'No repite la condición (no describe la tabla de implementaciones)',
+    exp: 'La causa NO debe repetir los datos de la tabla. Debe explicar el origen del problema, no los hechos.',
+    check: [['100%','4 de 4','5 de 5','socios empresariales implementadas','proveedores implementadas']],
+    mode: 'absent', peso: 15
   }
 ];
 
 const ERRORES_COMUNES = [
-  {tokens:['porque','debido a','ya que','puesto que'], msg:'Incluiste una causa ("porque / debido a"). La causa va en otro componente del hallazgo.'},
   {tokens:['se recomienda','se sugiere','debe ','debería','hay que'], msg:'Incluiste una recomendación. Las acciones correctivas van en el componente "recomendación".'},
-  {tokens:['podría','es posible que','tal vez','quizás'], msg:'Usaste lenguaje especulativo. La condición solo describe hechos confirmados por la evidencia.'},
-  {tokens:['varios','algunos','muchos','pocos','frecuentemente'], msg:'Usaste lenguaje vago. Reemplaza con datos concretos de la evidencia.'},
-  {tokens:['hay ','existe ','tienen acceso','tienen ideas'], msg:'Usaste tiempo presente. La condición debe estar en pasado: "se identificaron", "se verificó".'},
-  {tokens:['grave','crítico','preocupante','inaceptable','inadecuado'], msg:'Incluiste un juicio de valor. La condición es objetiva, sin adjetivos valorativos.'}
+  {tokens:['podría','es posible que','tal vez','quizás'], msg:'Usaste lenguaje especulativo. Describe solo hechos confirmados por la evidencia.'},
+  {tokens:['grave','crítico','preocupante','inaceptable'], msg:'Incluiste un juicio de valor. Usa lenguaje objetivo sin adjetivos valorativos.'}
 ];
 
 function $(id){return document.getElementById(id);}
 function wc(t){return t.split(/\s+/).filter(w=>w).length;}
 
-function upd(ta){
-  const v=ta.value;
-  const cc=$('cc'); if(cc) cc.textContent=v.length+' caracteres';
-  const ww=$('ww'); if(ww) ww.textContent=wc(v)+' palabras';
+function updateProgress(){
+  const pct = fase === 1 ? 0 : fase === 2 ? 50 : 100;
+  $('prog-fill').style.width = pct + '%';
+  $('prog-pct').textContent = pct + '%';
+  $('prog-label').textContent = fase <= 2 ? 'Paso ' + fase + ' de 2' : 'Completado';
+  $('pill-1').className = 'step-pill ' + (fase === 1 ? 'active' : 'done');
+  $('pill-2').className = 'step-pill ' + (fase === 2 ? 'active' : fase > 2 ? 'done' : 'pending');
 }
 
-function mostrarPista(){
-  const h=$('hint-box');
-  if(h) h.style.display='block';
-}
-
-function evalRubrica(text){
-  const lower=text.toLowerCase();
-  return RUBRICA.map(r=>{
-    let pass=false;
-    if(r.mode==='absent'){
-      pass=!r.check[0].some(k=>lower.includes(k));
-    } else if(r.mode==='all_groups'){
-      pass=r.check.every(group=>group.some(k=>lower.includes(k)));
+function evalRubrica(text, rubrica){
+  const lower = text.toLowerCase();
+  return rubrica.map(r => {
+    let pass = false;
+    if(r.mode === 'absent'){
+      pass = !r.check.some(k => lower.includes(k));
+    } else if(r.mode === 'all_groups'){
+      pass = r.check.every(group => group.some(k => lower.includes(k)));
     } else {
-      pass=r.check[0].some(k=>lower.includes(k));
+      pass = r.check.some(k => lower.includes(k));
     }
-    return{...r,pass};
+    return {...r, pass};
   });
 }
 
 function calcScore(res){
-  const total=res.reduce((a,r)=>a+r.peso,0);
-  const earned=res.filter(r=>r.pass).reduce((a,r)=>a+r.peso,0);
-  return Math.round(earned/total*100);
+  const total = res.reduce((a,r) => a + r.peso, 0);
+  const earned = res.filter(r => r.pass).reduce((a,r) => a + r.peso, 0);
+  return Math.round(earned / total * 100);
 }
 
 function detectarErrores(text){
-  const lower=text.toLowerCase();
-  return ERRORES_COMUNES.filter(e=>e.tokens.some(t=>lower.includes(t)));
+  const lower = text.toLowerCase();
+  return ERRORES_COMUNES.filter(e => e.tokens.some(t => lower.includes(t)));
 }
 
 function getLevel(score){
-  if(score>=85) return 'Excelente';
-  if(score>=65) return 'Buena';
-  if(score>=40) return 'Mejorable';
+  if(score >= 85) return 'Excelente';
+  if(score >= 65) return 'Buena';
+  if(score >= 40) return 'Mejorable';
   return 'Insuficiente';
 }
 
@@ -243,68 +254,37 @@ function getIcon(lvl){
   return lvl==='Excelente'?'ti-award':lvl==='Buena'?'ti-circle-check':lvl==='Mejorable'?'ti-alert-triangle':'ti-circle-x';
 }
 
-function getFeedbackText(score, rubRes, errors){
-  const passed=rubRes.filter(r=>r.pass);
-  const failed=rubRes.filter(r=>!r.pass);
-  let lines=[];
-  if(score>=85){
-    lines.push('Tu condición cumple con los criterios formales de auditoría. Está cuantificada, identifica el patrón clave de la evidencia y usa lenguaje profesional en tiempo pasado.');
-  } else if(score>=65){
-    lines.push('Tu condición tiene una base sólida pero requiere ajustes para ser formalmente correcta.');
-    if(failed.length) lines.push('Criterios pendientes: '+failed.map(r=>r.lbl.toLowerCase()).join('; ')+'.');
-  } else if(score>=40){
-    lines.push('Tu condición incluye algunos elementos correctos, pero tiene brechas significativas.');
-    if(failed.length) lines.push('Lo que falta: '+failed.map(r=>r.lbl.toLowerCase()).join('; ')+'.');
-  } else {
-    lines.push('La redacción aún no cumple los criterios mínimos de una condición formal de auditoría.');
-    lines.push('Recuerda: la condición solo describe hechos objetivos, cuantificados, en tiempo pasado, basados en la evidencia.');
-  }
-  if(errors.length>0&&score<85) lines.push('Además se detectaron errores de redacción que debes corregir.');
-  return lines.join(' ');
+function getFeedbackText(score, rubRes, fase){
+  const failed = rubRes.filter(r => !r.pass);
+  if(score >= 85) return fase === 1
+    ? 'Tu condición es objetiva, cuantificada y se basa exclusivamente en los datos de la evidencia. Excelente trabajo.'
+    : 'Tu causa identifica correctamente el origen del problema: la concentración de decisiones sin controles formales.';
+  if(score >= 65) return 'Buena base, pero requiere ajustes. Criterios pendientes: ' + failed.map(r=>r.lbl.toLowerCase()).join('; ') + '.';
+  if(score >= 40) return 'Hay elementos correctos pero falta trabajar: ' + failed.map(r=>r.lbl.toLowerCase()).join('; ') + '.';
+  return fase === 1
+    ? 'La condición debe describir solo los hechos de la tabla, cuantificados y en tiempo pasado. No incluyas información de la entrevista.'
+    : 'La causa debe explicar por qué ocurre el problema: qué control falta, quién concentra el poder de decisión y qué no está documentado.';
 }
 
-function evaluar(){
-  const ans=($('ta')||{value:''}).value.trim();
-  if(ans.length<15){
-    const ta=$('ta');
-    if(ta){ta.style.borderColor='#E24B4A';setTimeout(()=>ta.style.borderColor='',1500);}
-    return;
-  }
-  intentos++;
-  const ta=$('ta'); if(ta) ta.disabled=true;
-  const btn=$('btn-eval'); if(btn) btn.disabled=true;
-
-  const rubRes=evalRubrica(ans);
-  const score=calcScore(rubRes);
-  const errors=detectarErrores(ans);
-  const lvl=getLevel(score);
-  const icon=getIcon(lvl);
-  const text=getFeedbackText(score,rubRes,errors);
-  const mostrarIdeal=score<65;
-
-  let errHTML='';
-  if(errors.length>0){
-    errHTML=`<div class="errors-card">
-      <div class="errors-title"><i class="ti ti-alert-triangle"></i>Errores de redacción detectados</div>
-      ${errors.map(e=>`<div class="error-item"><i class="ti ti-point" style="font-size:14px;flex-shrink:0"></i><span>${e.msg}</span></div>`).join('')}
+function renderFeedback(score, rubRes, ideal, errors, onNext){
+  const lvl = getLevel(score);
+  const icon = getIcon(lvl);
+  const text = getFeedbackText(score, rubRes, fase);
+  const mostrarIdeal = score < 65;
+  let errHTML = '';
+  if(errors.length > 0){
+    errHTML = `<div style="background:var(--red-l);border:0.5px solid #F09595;border-radius:var(--r-md);padding:.85rem 1rem;margin-bottom:.85rem">
+      <div style="font-size:13px;font-weight:500;color:var(--red-d);margin-bottom:.5rem;display:flex;align-items:center;gap:6px"><i class="ti ti-alert-triangle"></i>Errores detectados</div>
+      ${errors.map(e=>`<div style="font-size:12px;color:var(--red-d);display:flex;gap:6px;margin-bottom:4px"><i class="ti ti-point" style="font-size:14px;flex-shrink:0"></i><span>${e.msg}</span></div>`).join('')}
     </div>`;
   }
-
-  let idealHTML='';
-  if(mostrarIdeal){
-    idealHTML=`<div class="ideal-card">
-      <div class="ideal-lbl">Condición de referencia</div>
-      <div class="ideal-text">${IDEAL}</div>
-    </div>`;
-  }
-
-  $('fb').innerHTML=`
+  return `
     <div style="margin-top:1rem">
       <div class="fb-banner fb-${lvl}">
         <div class="fb-ic"><i class="ti ${icon}"></i></div>
         <div>
           <div class="fb-nivel">${lvl}</div>
-          <div class="fb-sub">${score}% de criterios cumplidos · Intento ${intentos}</div>
+          <div class="fb-sub">${score}% de criterios cumplidos</div>
         </div>
       </div>
       <div class="fb-body">${text}</div>
@@ -312,27 +292,223 @@ function evaluar(){
         <div class="rubric-title">Evaluación por criterio</div>
         ${rubRes.map(r=>`<div class="rubric-item">
           <i class="ti ${r.pass?'ti-circle-check ri-ok':'ti-circle-x ri-bad'}"></i>
-          <div>
-            <div class="ri-lbl">${r.lbl}</div>
-            ${!r.pass?`<div class="ri-exp">${r.exp}</div>`:''}
-          </div>
+          <div><div class="ri-lbl">${r.lbl}</div>${!r.pass?`<div class="ri-exp">${r.exp}</div>`:''}</div>
         </div>`).join('')}
       </div>
       ${errHTML}
-      ${idealHTML}
-      ${lvl!=='Excelente'?`<div class="arow"><button class="btn-s" onclick="reintentar()">
-        <i class="ti ti-refresh" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>Intentar de nuevo
-      </button></div>`:''}
+      ${mostrarIdeal?`<div class="ideal-card"><div class="ideal-lbl">Referencia</div><div class="ideal-text">${ideal}</div></div>`:''}
+      <div class="arow">
+        ${lvl!=='Excelente'?`<button class="btn-s" onclick="reintentar()"><i class="ti ti-refresh" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>Intentar de nuevo</button>`:''}
+        ${onNext?`<button class="btn-p" onclick="${onNext}">${fase===1?'Continuar a la Causa →':'Ver resumen final →'}</button>`:''}
+      </div>
     </div>`;
 }
 
-function reintentar(){
-  const ta=$('ta'); if(ta){ta.disabled=false;ta.value='';}
-  const btn=$('btn-eval'); if(btn) btn.disabled=false;
-  const cc=$('cc'); if(cc) cc.textContent='0 caracteres';
-  const ww=$('ww'); if(ww) ww.textContent='0 palabras';
-  $('fb').innerHTML='';
+/* ── FASE 1: CONDICIÓN ── */
+function renderFase1(){
+  updateProgress();
+  $('main').innerHTML = `
+  <div class="card">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.55rem">
+      <span class="badge b-medio">🟡 Riesgo medio</span>
+      <span class="badge b-fw"><i class="ti ti-book" style="font-size:11px"></i> COBIT 2019 APO04</span>
+    </div>
+    <div style="font-size:12px;color:var(--text2);margin-bottom:5px">Gestión de la Innovación</div>
+    <div style="font-size:17px;font-weight:500;color:var(--text);margin-bottom:.6rem">Gestión de ideas innovadoras en el Área de TI</div>
+    <div style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem">
+      Le asignan auditar la gestión de la innovación en una organización cuyo plan estratégico define la necesidad de innovar para diferenciarse de la competencia.<br><br>
+      Las ideas clasificadas como "innovadoras" se envían al correo del Área de Innovación de TI. Usted solicita acceso, identifica las <strong>15 ideas generadas en el último año</strong> y determina cuáles fueron implementadas según el siguiente cuadro:
+    </div>
+    <div class="ev-lbl"><i class="ti ti-file-search" style="font-size:12px;vertical-align:-1px;margin-right:4px"></i>Evidencia — Cuadro de ideas recibidas</div>
+    <table>
+      <tr><th>No. Idea</th><th>Propuesta por</th><th>Implementada</th></tr>
+      <tr><td>1</td><td>Socios Empresariales</td><td>Sí</td></tr>
+      <tr><td>2</td><td>Proveedores</td><td>Sí</td></tr>
+      <tr><td>3</td><td>Proveedores</td><td>Sí</td></tr>
+      <tr><td>4</td><td>Socios Empresariales</td><td>Sí</td></tr>
+      <tr><td>5</td><td>Proveedores</td><td>Sí</td></tr>
+      <tr><td>6</td><td>Socios Empresariales</td><td>Sí</td></tr>
+      <tr><td>7</td><td>Clientes</td><td>No</td></tr>
+      <tr><td>8</td><td>Funcionarios</td><td>No</td></tr>
+      <tr><td>9</td><td>Socios Empresariales</td><td>Sí</td></tr>
+      <tr><td>10</td><td>Clientes</td><td>No</td></tr>
+      <tr><td>11</td><td>Proveedores</td><td>Sí</td></tr>
+      <tr><td>12</td><td>Clientes</td><td>No</td></tr>
+      <tr><td>13</td><td>Funcionarios</td><td>No</td></tr>
+      <tr><td>14</td><td>Clientes</td><td>No</td></tr>
+      <tr><td>15</td><td>Funcionarios</td><td>No</td></tr>
+    </table>
+    <div class="tip-box">
+      <i class="ti ti-info-circle" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i>
+      <strong>Condición:</strong> Describe QUÉ encontraste en la evidencia — hechos objetivos, cuantificados, en tiempo pasado. Solo usa los datos de la tabla.
+    </div>
+    <div class="hint-box" id="hint1">
+      <i class="ti ti-bulb" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i>
+      <strong>Pista:</strong> Analiza el patrón: ¿qué tienen en común las 8 ideas implementadas? ¿Y las 7 no implementadas? Agrupa por origen y calcula porcentajes.
+    </div>
+    <label style="font-size:14px;font-weight:500;color:var(--text);display:block;margin-bottom:.35rem">Redacta la condición del hallazgo:</label>
+    <div style="font-size:12px;color:var(--text2);margin-bottom:.55rem">Solo datos de la tabla · tiempo pasado · sin mencionar entrevistas ni registros</div>
+    <textarea id="ta1" rows="4" placeholder="Se verificó que de las 15 ideas..." oninput="upd('ta1','cc1','ww1')">${respuesta1}</textarea>
+    <div class="char-row"><span id="cc1">0 caracteres</span><span id="ww1">0 palabras</span></div>
+    <div class="arow">
+      <button class="btn-hint" onclick="$('hint1').style.display='block'"><i class="ti ti-bulb" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>Pista</button>
+      <button class="btn-p" id="btn1" onclick="evalFase1()">Evaluar condición</button>
+    </div>
+    <div id="fb1"></div>
+  </div>`;
+  if(respuesta1) upd2('ta1','cc1','ww1',respuesta1);
 }
+
+/* ── FASE 2: CAUSA ── */
+function renderFase2(){
+  fase = 2;
+  updateProgress();
+  $('main').innerHTML = `
+  <div class="card" style="background:var(--green-l);border-color:var(--green);margin-bottom:.75rem">
+    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--green-d)">
+      <i class="ti ti-circle-check" style="font-size:18px"></i>
+      <strong>Condición aprobada.</strong> Ahora redacta la causa de este hallazgo.
+    </div>
+  </div>
+  <div class="card">
+    <div style="font-size:15px;font-weight:500;color:var(--text);margin-bottom:.6rem">Paso 2 — Causa del hallazgo</div>
+    <div style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem">
+      Luego de analizar la evidencia, usted realiza una entrevista al Jefe del Área de Innovación de TI y obtiene la siguiente información adicional:
+    </div>
+    <div class="ev-lbl"><i class="ti ti-message-circle" style="font-size:12px;vertical-align:-1px;margin-right:4px"></i>Información obtenida en entrevista</div>
+    <div class="entrevista-box">
+      <div class="entrevista-lbl">Entrevista — Jefe Área de Innovación de TI</div>
+      Al consultar cómo se determina cuál idea potencialmente innovadora es implementada, el Jefe indica que <strong>es él quien primero lo documenta y define</strong>. Además, usted conoce que <strong>ese correo es accedido únicamente por el Jefe del Área</strong>.<br><br>
+      Al solicitar los registros o criterios que respaldan esas decisiones, se determina que <strong>no existen registros que validen esas afirmaciones</strong>.
+    </div>
+    <div class="tip-box">
+      <i class="ti ti-info-circle" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i>
+      <strong>Causa:</strong> Explica POR QUÉ ocurre el hallazgo — el origen del problema, qué control falta, qué no está formalizado. No repitas los datos de la tabla.
+    </div>
+    <div class="hint-box" id="hint2">
+      <i class="ti ti-bulb" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i>
+      <strong>Pista:</strong> Piensa en quién concentra el poder de decisión, si tiene controles sobre esa decisión, y qué documentación respalda el proceso.
+    </div>
+    <label style="font-size:14px;font-weight:500;color:var(--text);display:block;margin-bottom:.35rem">Redacta la causa del hallazgo:</label>
+    <div style="font-size:12px;color:var(--text2);margin-bottom:.55rem">Explica el origen del problema · sin repetir la condición · sin recomendaciones</div>
+    <textarea id="ta2" rows="4" placeholder="La causa radica en que / Se determinó que la causa es..." oninput="upd('ta2','cc2','ww2')">${respuesta2}</textarea>
+    <div class="char-row"><span id="cc2">0 caracteres</span><span id="ww2">0 palabras</span></div>
+    <div class="arow">
+      <button class="btn-hint" onclick="$('hint2').style.display='block'"><i class="ti ti-bulb" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>Pista</button>
+      <button class="btn-p" id="btn2" onclick="evalFase2()">Evaluar causa</button>
+    </div>
+    <div id="fb2"></div>
+  </div>`;
+  if(respuesta2) upd2('ta2','cc2','ww2',respuesta2);
+}
+
+/* ── RESUMEN FINAL ── */
+function renderResumen(){
+  fase = 3;
+  updateProgress();
+  $('prog-fill').style.width = '100%';
+  $('prog-pct').textContent = '100%';
+  const avg = Math.round((score1 + score2) / 2);
+  const grade = avg>=85?'🏆 Excelente':avg>=65?'✅ Competente':avg>=40?'📚 En desarrollo':'⚠️ Requiere práctica';
+  $('main').innerHTML = `
+  <div class="card">
+    <div class="score-grande">
+      <div class="score-num">${avg}<span style="font-size:24px;color:var(--text2)">%</span></div>
+      <div class="score-sub">Promedio condición + causa</div>
+      <div><span class="badge b-fw" style="font-size:13px;padding:5px 14px">${grade}</span></div>
+    </div>
+    <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:.75rem">Tu hallazgo redactado:</div>
+    <div class="resumen-item">
+      <div class="resumen-lbl">Condición <span style="font-weight:400">(${score1}%)</span></div>
+      <div class="resumen-text">${respuesta1}</div>
+    </div>
+    <div class="resumen-item" style="border-left-color:#378ADD">
+      <div class="resumen-lbl" style="color:#185FA5">Causa <span style="font-weight:400">(${score2}%)</span></div>
+      <div class="resumen-text">${respuesta2}</div>
+    </div>
+    <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:.5rem;margin-top:.5rem">Referencias:</div>
+    <div class="ideal-card" style="margin-bottom:.75rem">
+      <div class="ideal-lbl">Condición de referencia</div>
+      <div class="ideal-text">${IDEAL_CONDICION}</div>
+    </div>
+    <div class="ideal-card">
+      <div class="ideal-lbl">Causa de referencia</div>
+      <div class="ideal-text">${IDEAL_CAUSA}</div>
+    </div>
+    <div class="arow" style="justify-content:center;margin-top:1rem">
+      <button class="btn-p" onclick="reiniciar()"><i class="ti ti-refresh" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>Volver a intentar</button>
+    </div>
+  </div>`;
+}
+
+function upd(taId, ccId, wwId){
+  const ta=$(taId); if(!ta) return;
+  const v=ta.value;
+  if(taId==='ta1') respuesta1=v;
+  else respuesta2=v;
+  const cc=$(ccId); if(cc) cc.textContent=v.length+' caracteres';
+  const ww=$(wwId); if(ww) ww.textContent=wc(v)+' palabras';
+}
+
+function upd2(taId,ccId,wwId,val){
+  const cc=$(ccId); if(cc) cc.textContent=val.length+' caracteres';
+  const ww=$(wwId); if(ww) ww.textContent=wc(val)+' palabras';
+}
+
+function evalFase1(){
+  const ans=($('ta1')||{value:''}).value.trim();
+  if(ans.length<15){const t=$('ta1');if(t){t.style.borderColor='#E24B4A';setTimeout(()=>t.style.borderColor='',1500);}return;}
+  respuesta1=ans;
+  intentos1++;
+  const ta=$('ta1');if(ta)ta.disabled=true;
+  const btn=$('btn1');if(btn)btn.disabled=true;
+  const rubRes=evalRubrica(ans,RUBRICA_CONDICION);
+  const score=calcScore(rubRes);
+  score1=score;
+  const errors=detectarErrores(ans);
+  const onNext=score>=40?'renderFase2()':null;
+  $('fb1').innerHTML=renderFeedback(score,rubRes,IDEAL_CONDICION,errors,onNext);
+}
+
+function evalFase2(){
+  const ans=($('ta2')||{value:''}).value.trim();
+  if(ans.length<15){const t=$('ta2');if(t){t.style.borderColor='#E24B4A';setTimeout(()=>t.style.borderColor='',1500);}return;}
+  respuesta2=ans;
+  intentos2++;
+  const ta=$('ta2');if(ta)ta.disabled=true;
+  const btn=$('btn2');if(btn)btn.disabled=true;
+  const rubRes=evalRubrica(ans,RUBRICA_CAUSA);
+  const score=calcScore(rubRes);
+  score2=score;
+  const errors=detectarErrores(ans);
+  const onNext='renderResumen()';
+  $('fb2').innerHTML=renderFeedback(score,rubRes,IDEAL_CAUSA,errors,onNext);
+}
+
+function reintentar(){
+  if(fase===1){
+    const ta=$('ta1');if(ta){ta.disabled=false;ta.value='';}
+    respuesta1='';
+    const btn=$('btn1');if(btn)btn.disabled=false;
+    const cc=$('cc1');if(cc)cc.textContent='0 caracteres';
+    const ww=$('ww1');if(ww)ww.textContent='0 palabras';
+    $('fb1').innerHTML='';
+  } else {
+    const ta=$('ta2');if(ta){ta.disabled=false;ta.value='';}
+    respuesta2='';
+    const btn=$('btn2');if(btn)btn.disabled=false;
+    const cc=$('cc2');if(cc)cc.textContent='0 caracteres';
+    const ww=$('ww2');if(ww)ww.textContent='0 palabras';
+    $('fb2').innerHTML='';
+  }
+}
+
+function reiniciar(){
+  fase=1;intentos1=0;intentos2=0;score1=null;score2=null;respuesta1='';respuesta2='';
+  renderFase1();
+}
+
+renderFase1();
 </script>
 </body>
 </html>
