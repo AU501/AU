@@ -40,18 +40,24 @@ body{font-family:var(--font);background:var(--bg3);min-height:100vh;padding:1.5r
 .badge{font-size:11px;padding:2px 9px;border-radius:20px;font-weight:500;display:inline-flex;align-items:center;gap:4px}
 .b-medio{background:var(--amber-l);color:var(--amber-d)}
 .b-fw{background:var(--purple-l);color:var(--purple-d)}
-.ev-lbl{font-size:11px;font-weight:500;color:#534AB7;letter-spacing:.04em;margin-bottom:8px;text-transform:uppercase}
+.b-green{background:var(--green-l);color:var(--green-d)}
 table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1rem}
 th{background:var(--bg3);padding:7px 10px;text-align:left;font-weight:500;border:0.5px solid var(--border2);color:var(--text)}
 td{padding:7px 10px;border:0.5px solid var(--border);color:var(--text)}
 tr:nth-child(even) td{background:var(--bg2)}
+.ev-lbl{font-size:11px;font-weight:500;color:#534AB7;letter-spacing:.04em;margin-bottom:8px;text-transform:uppercase}
 .entrevista-box{background:var(--blue-l);border-left:3px solid #378ADD;border-radius:0 var(--r-md) var(--r-md) 0;padding:.85rem 1rem;margin-bottom:1rem;font-size:13px;color:var(--text);line-height:1.7}
 .entrevista-lbl{font-size:11px;font-weight:500;color:#185FA5;letter-spacing:.04em;margin-bottom:6px;text-transform:uppercase}
 .tip-box{background:var(--purple-l);border-radius:var(--r-md);padding:.7rem 1rem;margin-bottom:.9rem;font-size:13px;color:var(--purple-d);line-height:1.6}
 .hint-box{background:var(--blue-l);border-radius:var(--r-md);padding:.7rem 1rem;margin-bottom:.9rem;font-size:13px;color:var(--blue-d);line-height:1.6;display:none}
+.reflexion-box{background:var(--amber-l);border:0.5px solid #EF9F27;border-radius:var(--r-lg);padding:1.1rem 1.25rem;margin-bottom:1rem}
+.reflexion-titulo{font-size:14px;font-weight:500;color:var(--amber-d);margin-bottom:.5rem;display:flex;align-items:center;gap:7px}
+.reflexion-pregunta{font-size:13px;color:var(--amber-d);line-height:1.7;margin-bottom:.85rem}
 textarea{width:100%;padding:.75rem .9rem;border:0.5px solid var(--border2);border-radius:var(--r-md);font-size:14px;color:var(--text);background:var(--bg);resize:vertical;line-height:1.6;font-family:var(--font)}
 textarea:focus{outline:none;border-color:var(--purple)}
 textarea:disabled{opacity:.6;cursor:default}
+textarea.reflexion-ta{border-color:#EF9F27;background:var(--bg);min-height:80px}
+textarea.reflexion-ta:focus{border-color:var(--amber)}
 .char-row{display:flex;justify-content:space-between;font-size:12px;color:var(--text3);margin-top:4px;margin-bottom:.75rem}
 .arow{display:flex;gap:8px;flex-wrap:wrap;margin-top:.9rem}
 .btn-p{padding:.65rem 1.3rem;border-radius:var(--r-md);border:0.5px solid var(--purple);background:var(--purple-l);color:var(--purple-d);font-size:14px;font-weight:500;cursor:pointer;font-family:var(--font)}
@@ -59,6 +65,8 @@ textarea:disabled{opacity:.6;cursor:default}
 .btn-p:disabled{opacity:.4;cursor:not-allowed}
 .btn-s{padding:.65rem 1.3rem;border-radius:var(--r-md);border:0.5px solid var(--border2);background:var(--bg);color:var(--text2);font-size:14px;cursor:pointer;font-family:var(--font)}
 .btn-s:hover{background:var(--bg2)}
+.btn-amber{padding:.65rem 1.3rem;border-radius:var(--r-md);border:0.5px solid #EF9F27;background:var(--amber-l);color:var(--amber-d);font-size:14px;font-weight:500;cursor:pointer;font-family:var(--font)}
+.btn-amber:hover{background:#FAC775}
 .btn-hint{padding:.5rem 1rem;border-radius:var(--r-md);border:0.5px solid #534AB7;background:transparent;color:#534AB7;font-size:13px;cursor:pointer;font-family:var(--font)}
 .btn-hint:hover{background:var(--purple-l)}
 .fb-banner{border-radius:var(--r-md);padding:.9rem 1.1rem;margin-bottom:.85rem;display:flex;align-items:center;gap:12px}
@@ -84,15 +92,21 @@ textarea:disabled{opacity:.6;cursor:default}
 .ri-bad{color:var(--red);font-size:16px;flex-shrink:0;margin-top:1px}
 .ri-lbl{flex:1;color:var(--text)}
 .ri-exp{font-size:12px;color:var(--text2);margin-top:3px;line-height:1.5}
-.ideal-card{background:var(--bg2);border-radius:var(--r-md);padding:.85rem 1rem;border-left:3px solid var(--purple);margin-bottom:.85rem}
-.ideal-lbl{font-size:11px;font-weight:500;color:#534AB7;text-transform:uppercase;letter-spacing:.03em;margin-bottom:5px}
-.ideal-text{font-size:13px;color:var(--text);line-height:1.7}
 .resumen-item{background:var(--bg2);border-radius:var(--r-md);padding:.85rem 1rem;margin-bottom:.75rem;border-left:3px solid var(--purple)}
 .resumen-lbl{font-size:11px;font-weight:500;color:#534AB7;text-transform:uppercase;letter-spacing:.03em;margin-bottom:5px}
 .resumen-text{font-size:13px;color:var(--text);line-height:1.7}
+.reflexion-guardada{background:var(--amber-l);border-left:3px solid var(--amber);border-radius:0 var(--r-md) var(--r-md) 0;padding:.85rem 1rem;margin-bottom:.75rem}
+.reflexion-guardada-lbl{font-size:11px;font-weight:500;color:var(--amber-d);text-transform:uppercase;letter-spacing:.03em;margin-bottom:5px}
+.reflexion-guardada-text{font-size:13px;color:var(--text);line-height:1.7}
 .score-grande{text-align:center;padding:1.5rem 0}
 .score-num{font-size:52px;font-weight:500;color:var(--text)}
 .score-sub{font-size:14px;color:var(--text2);margin-bottom:.75rem}
+.criterios-resumen{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem}
+.criterio-chip{border-radius:var(--r-md);padding:.6rem .85rem;font-size:12px;line-height:1.5}
+.criterio-chip.ok{background:var(--green-l);border:0.5px solid #97C459;color:var(--green-d)}
+.criterio-chip.bad{background:var(--red-l);border:0.5px solid #F09595;color:var(--red-d)}
+.criterio-chip-lbl{font-weight:500;display:flex;align-items:center;gap:5px;margin-bottom:2px}
+@media(max-width:500px){.criterios-resumen{grid-template-columns:1fr}}
 footer{text-align:center;font-size:12px;color:var(--text3);margin-top:2rem;padding-bottom:1rem}
 </style>
 </head>
@@ -100,36 +114,35 @@ footer{text-align:center;font-size:12px;color:var(--text3);margin-top:2rem;paddi
 <div class="wrap">
 <div class="progress-wrap">
   <div class="progress-label">
-    <span id="prog-label">Paso 1 de 2 — Condición</span>
+    <span id="prog-label">Paso 1 de 3 — Condición</span>
     <span id="prog-pct">0%</span>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
   <div class="steps-row">
     <div class="step-pill active" id="pill-1">1 · Condición</div>
     <div class="step-pill pending" id="pill-2">2 · Causa</div>
+    <div class="step-pill pending" id="pill-3">3 · Reflexión</div>
   </div>
 </div>
 <div id="main"></div>
-<footer>Auditoría de TI · COBIT 2019 APO04 · Evaluación automática · Uso educativo</footer>
+<footer>Auditoría de TI · COBIT 2019 APO04 · Uso educativo</footer>
 </div>
 
 <script>
-let fase=1, intentos1=0, intentos2=0, score1=null, score2=null, respuesta1='', respuesta2='';
-
-const IDEAL_CONDICION='Se verificó que de las 15 ideas innovadoras recibidas en el período analizado, el 100% de las propuestas por Socios Empresariales (4 de 4) y Proveedores (4 de 4) fueron implementadas, mientras que el 100% de las propuestas por Clientes (5 de 5) y Funcionarios (3 de 3) no fueron implementadas, sin que exista evidencia de criterios objetivos que fundamenten dichas decisiones de implementación.';
-
-const IDEAL_CAUSA='La causa radica en que el proceso de selección e implementación de ideas innovadoras recae de forma exclusiva en el Jefe del Área de Innovación de TI, quien además es el único con acceso al correo receptor de ideas, sin que existan procedimientos formalizados, criterios documentados ni registros que respalden o validen las decisiones tomadas, lo que impide la trazabilidad y supervisión del proceso.';
+let fase=1, score1=null, score2=null;
+let respuesta1='', respuesta2='', reflexion1='', reflexion2='';
+let rubRes1=[], rubRes2=[];
 
 const RUBRICA_CONDICION=[
   {
     lbl:'Identifica el patrón: ideas externas implementadas vs internas no implementadas',
-    exp:'Debe señalar que las ideas de Socios Empresariales y Proveedores fueron implementadas, mientras que las de Clientes y Funcionarios no lo fueron.',
+    exp:'Debe señalar que las ideas de Socios Empresariales y Proveedores fueron implementadas, mientras que las de Clientes y Funcionarios no.',
     tokens:[['socio','proveedor','externo'],['cliente','funcionario','interno','no implement','ninguna de']],
     mode:'all_groups', peso:30
   },
   {
     lbl:'Cuantifica los datos con cifras de la evidencia',
-    exp:'Debe incluir números concretos: 15 ideas, 8 implementadas, 7 no implementadas, porcentajes o cantidades por grupo (4 de 4, 5 de 5, 3 de 3).',
+    exp:'Debe incluir números: 15 ideas, 8 implementadas, 7 no, porcentajes o cantidades por grupo (4 de 4, 5 de 5, 3 de 3).',
     tokens:[['15','ocho','8 idea','4 de 4','7 no','100%','0%','ninguna de las','cinco de','cuatro de','tres de']],
     mode:'any', peso:25
   },
@@ -141,7 +154,7 @@ const RUBRICA_CONDICION=[
   },
   {
     lbl:'No incluye la causa (no menciona al Jefe, registros ni criterios)',
-    exp:'La condición NO debe mencionar al Jefe, los registros inexistentes ni los criterios de selección. Esa información corresponde a la CAUSA, no a la condición.',
+    exp:'La condición NO debe mencionar al Jefe, registros inexistentes ni criterios de selección. Esa información corresponde a la CAUSA.',
     tokens:[['jefe','registros','criterios','documenta','acceso al correo','decide él','él decide','él quien','no exist']],
     mode:'absent', peso:25
   }
@@ -155,55 +168,51 @@ const RUBRICA_CAUSA=[
     mode:'any', peso:30
   },
   {
-    lbl:'Menciona la ausencia de criterios documentados, procedimientos o registros',
-    exp:'Debe indicar que no existen criterios formalizados, procedimientos documentados o registros que respalden las decisiones de selección.',
+    lbl:'Menciona ausencia de criterios documentados, procedimientos o registros',
+    exp:'Debe indicar que no existen criterios formalizados, procedimientos o registros que respalden las decisiones.',
     tokens:[['no exist','sin criterio','sin procedimiento','sin registro','no hay criterio','no document','ausencia','criterios document','no formali','no se document']],
     mode:'any', peso:35
   },
   {
     lbl:'Menciona el acceso exclusivo al correo como parte del problema',
-    exp:'El hecho de que solo el Jefe acceda al correo receptor de ideas es parte de la causa raíz del control débil.',
+    exp:'El acceso exclusivo del Jefe al correo receptor de ideas es parte de la causa raíz del control débil.',
     tokens:[['correo','acceso','único acceso','solo accede','accedido únicamente','accedido por','correo de mensajería']],
     mode:'any', peso:20
   },
   {
     lbl:'No repite los datos de la tabla (no describe la condición)',
-    exp:'La causa explica el ORIGEN del problema, no los hechos de la tabla. No debe repetir porcentajes ni grupos de la evidencia.',
-    tokens:[['100%','4 de 4','5 de 5','3 de 3','socios empresariales implement','proveedores implement','clientes no','funcionarios no']],
+    exp:'La causa explica el ORIGEN del problema, no los hechos de la tabla. No debe repetir porcentajes ni grupos.',
+    tokens:[['100%','4 de 4','5 de 5','3 de 3','socios empresariales implement','proveedores implement']],
     mode:'absent', peso:15
   }
 ];
 
 const ERRORES=[
-  {tokens:['se recomienda','se sugiere','debe ','debería','hay que'], msg:'Incluiste una recomendación. Las acciones correctivas van en el componente "recomendación", no aquí.'},
+  {tokens:['se recomienda','se sugiere','debe ','debería','hay que'], msg:'Incluiste una recomendación. Las acciones correctivas van en el componente "recomendación".'},
   {tokens:['podría','es posible que','tal vez','quizás'], msg:'Usaste lenguaje especulativo. Describe solo hechos confirmados por la evidencia.'},
-  {tokens:['grave','crítico','preocupante','inaceptable'], msg:'Incluiste un juicio de valor. Usa lenguaje objetivo sin adjetivos valorativos.'},
-  {tokens:['porque','debido a','ya que'], msg:'Incluiste una explicación causal. Guarda eso para el componente "causa".'}
+  {tokens:['grave','crítico','preocupante','inaceptable'], msg:'Incluiste un juicio de valor. Usa lenguaje objetivo sin adjetivos valorativos.'}
 ];
 
 function $(id){return document.getElementById(id);}
 function wc(t){return t.split(/\s+/).filter(w=>w).length;}
 
 function updateProgress(){
-  const pct=fase===1?0:fase===2?50:100;
+  const pct=fase===1?0:fase===2?33:fase===3?66:100;
   $('prog-fill').style.width=pct+'%';
   $('prog-pct').textContent=pct+'%';
-  $('prog-label').textContent=fase===1?'Paso 1 de 2 — Condición':fase===2?'Paso 2 de 2 — Causa':'Completado';
+  $('prog-label').textContent=fase===1?'Paso 1 de 3 — Condición':fase===2?'Paso 2 de 3 — Causa':fase===3?'Paso 3 de 3 — Reflexión':'Completado';
   $('pill-1').className='step-pill '+(fase===1?'active':'done');
   $('pill-2').className='step-pill '+(fase===2?'active':fase>2?'done':'pending');
+  $('pill-3').className='step-pill '+(fase===3?'active':fase>3?'done':'pending');
 }
 
 function evalRubrica(text,rubrica){
   const lower=text.toLowerCase();
   return rubrica.map(r=>{
     let pass=false;
-    if(r.mode==='absent'){
-      pass=!r.tokens.some(k=>lower.includes(k));
-    }else if(r.mode==='all_groups'){
-      pass=r.tokens.every(group=>group.some(k=>lower.includes(k)));
-    }else{
-      pass=r.tokens.some(k=>lower.includes(k));
-    }
+    if(r.mode==='absent') pass=!r.tokens.some(k=>lower.includes(k));
+    else if(r.mode==='all_groups') pass=r.tokens.every(group=>group.some(k=>lower.includes(k)));
+    else pass=r.tokens.some(k=>lower.includes(k));
     return{...r,pass};
   });
 }
@@ -232,21 +241,20 @@ function getIcon(lvl){
 
 function getFeedbackText(score,rubRes,f){
   const failed=rubRes.filter(r=>!r.pass);
-  if(score>=85)return f===1
-    ?'Tu condición es objetiva, cuantificada y se basa exclusivamente en los datos de la evidencia. Muy bien.'
+  if(score>=85) return f===1
+    ?'Tu condición es objetiva, cuantificada y usa solo los datos de la evidencia. Muy bien.'
     :'Tu causa identifica correctamente el origen del problema: la concentración de decisiones sin controles ni registros formales.';
-  if(score>=65)return'Buena base, pero requiere ajustes. Criterios pendientes: '+failed.map(r=>r.lbl.toLowerCase()).join('; ')+'.';
-  if(score>=40)return'Hay elementos correctos pero faltan aspectos importantes: '+failed.map(r=>r.lbl.toLowerCase()).join('; ')+'.';
+  if(score>=65) return'Buena base, pero requiere ajustes. Criterios pendientes: '+failed.map(r=>r.lbl.toLowerCase()).join('; ')+'.';
+  if(score>=40) return'Hay elementos correctos pero faltan aspectos importantes: '+failed.map(r=>r.lbl.toLowerCase()).join('; ')+'.';
   return f===1
-    ?'La condición debe describir solo los hechos de la tabla, cuantificados y en tiempo pasado. No incluyas información de entrevistas ni del Jefe — eso es la causa.'
-    :'La causa debe explicar por qué ocurre el problema: quién concentra el poder de decisión, qué control falta y qué no está documentado. No repitas los datos de la tabla.';
+    ?'La condición debe describir solo los hechos de la tabla, cuantificados y en tiempo pasado. No incluyas información de entrevistas ni del Jefe.'
+    :'La causa debe explicar por qué ocurre el problema: quién concentra el poder de decisión, qué control falta y qué no está documentado.';
 }
 
-function renderFeedback(score,rubRes,ideal,errors,f,onNext){
+function renderFeedback(score,rubRes,errors,f,onNext){
   const lvl=getLevel(score);
   const icon=getIcon(lvl);
   const text=getFeedbackText(score,rubRes,f);
-  const mostrarIdeal=score<65;
   let errHTML='';
   if(errors.length>0){
     errHTML=`<div style="background:var(--red-l);border:0.5px solid #F09595;border-radius:var(--r-md);padding:.85rem 1rem;margin-bottom:.85rem">
@@ -269,14 +277,14 @@ function renderFeedback(score,rubRes,ideal,errors,f,onNext){
         </div>`).join('')}
       </div>
       ${errHTML}
-      ${mostrarIdeal?`<div class="ideal-card"><div class="ideal-lbl">Referencia del profesor</div><div class="ideal-text">${ideal}</div></div>`:''}
       <div class="arow">
         <button class="btn-s" onclick="reintentar()"><i class="ti ti-refresh" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>Intentar de nuevo</button>
-        ${onNext?`<button class="btn-p" onclick="${onNext}">${f===1?'Continuar a la Causa →':'Ver resumen final →'}</button>`:''}
+        <button class="btn-p" onclick="${onNext}">${f===1?'Continuar a la Causa →':'Continuar a la Reflexión →'}</button>
       </div>
     </div>`;
 }
 
+/* ── FASE 1 ── */
 function renderFase1(){
   fase=1;updateProgress();
   $('main').innerHTML=`
@@ -312,7 +320,7 @@ function renderFase1(){
     </table>
     <div class="tip-box">
       <i class="ti ti-info-circle" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i>
-      <strong>Condición:</strong> Describe QUÉ encontraste en los datos — hechos objetivos, cuantificados, en tiempo pasado. Usa solo la información de la tabla de arriba.
+      <strong>Condición:</strong> Describe QUÉ encontraste en los datos — hechos objetivos, cuantificados, en tiempo pasado. Usa solo la información de la tabla.
     </div>
     <div class="hint-box" id="hint1">
       <i class="ti ti-bulb" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i>
@@ -333,6 +341,7 @@ function renderFase1(){
   if(respuesta1)updChar('cc1','ww1',respuesta1);
 }
 
+/* ── FASE 2 ── */
 function renderFase2(){
   fase=2;updateProgress();
   $('main').innerHTML=`
@@ -345,7 +354,7 @@ function renderFase2(){
   <div class="card">
     <div style="font-size:15px;font-weight:500;color:var(--text);margin-bottom:.6rem">Paso 2 — Causa del hallazgo</div>
     <div style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem">
-      Luego de analizar la evidencia de la tabla, usted realiza indagaciones adicionales y obtiene la siguiente información:
+      Luego de analizar la evidencia, usted realiza indagaciones adicionales y obtiene la siguiente información:
     </div>
     <div class="ev-lbl"><i class="ti ti-message-circle" style="font-size:12px;vertical-align:-1px;margin-right:4px"></i>Información obtenida en entrevista e indagación</div>
     <div class="entrevista-box">
@@ -376,23 +385,22 @@ function renderFase2(){
   if(respuesta2)updChar('cc2','ww2',respuesta2);
 }
 
-function renderResumen(){
-  fase=3;
-  $('prog-fill').style.width='100%';
-  $('prog-pct').textContent='100%';
-  $('prog-label').textContent='Completado';
-  $('pill-1').className='step-pill done';
-  $('pill-2').className='step-pill done';
+/* ── FASE 3: REFLEXIÓN ── */
+function renderFase3(){
+  fase=3;updateProgress();
   const avg=Math.round((score1+score2)/2);
   const grade=avg>=85?'🏆 Excelente':avg>=65?'✅ Competente':avg>=40?'📚 En desarrollo':'⚠️ Requiere práctica';
-  const gCls=avg>=65?'b-fw':avg>=40?'b-medio':'';
+  const failedC=rubRes1.filter(r=>!r.pass);
+  const failedCa=rubRes2.filter(r=>!r.pass);
+
   $('main').innerHTML=`
   <div class="card">
-    <div class="score-grande">
-      <div class="score-num">${avg}<span style="font-size:24px;color:var(--text2)">%</span></div>
-      <div class="score-sub">Promedio condición + causa</div>
-      <div><span class="badge ${gCls}" style="font-size:13px;padding:5px 14px">${grade}</span></div>
+    <div style="text-align:center;padding:1.25rem 0 1rem">
+      <div style="font-size:48px;font-weight:500;color:var(--text)">${avg}<span style="font-size:22px;color:var(--text2)">%</span></div>
+      <div style="font-size:14px;color:var(--text2);margin-bottom:.65rem">Promedio condición + causa</div>
+      <span class="badge b-fw" style="font-size:13px;padding:5px 14px">${grade}</span>
     </div>
+
     <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:.75rem">Tu hallazgo redactado:</div>
     <div class="resumen-item">
       <div class="resumen-lbl">Condición <span style="font-weight:400;color:var(--text2)">(${score1}%)</span></div>
@@ -402,48 +410,87 @@ function renderResumen(){
       <div class="resumen-lbl" style="color:#185FA5">Causa <span style="font-weight:400;color:var(--text2)">(${score2}%)</span></div>
       <div class="resumen-text">${respuesta2}</div>
     </div>
-    <div style="font-size:13px;font-weight:500;color:var(--text);margin-top:.5rem;margin-bottom:.5rem">Referencias del profesor:</div>
-    <div class="ideal-card" style="margin-bottom:.75rem">
-      <div class="ideal-lbl">Condición de referencia</div>
-      <div class="ideal-text">${IDEAL_CONDICION}</div>
+
+    <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:.6rem">Criterios pendientes de mejorar:</div>
+    <div class="criterios-resumen">
+      ${failedC.length===0&&failedCa.length===0
+        ?`<div class="criterio-chip ok" style="grid-column:1/-1"><div class="criterio-chip-lbl"><i class="ti ti-circle-check"></i>Todos los criterios cumplidos</div></div>`
+        :[...failedC.map(r=>`<div class="criterio-chip bad"><div class="criterio-chip-lbl"><i class="ti ti-circle-x"></i>Condición</div>${r.lbl}</div>`),
+          ...failedCa.map(r=>`<div class="criterio-chip bad"><div class="criterio-chip-lbl"><i class="ti ti-circle-x"></i>Causa</div>${r.lbl}</div>`)].join('')
+      }
     </div>
-    <div class="ideal-card">
-      <div class="ideal-lbl">Causa de referencia</div>
-      <div class="ideal-text">${IDEAL_CAUSA}</div>
+  </div>
+
+  <div class="reflexion-box">
+    <div class="reflexion-titulo"><i class="ti ti-message-question" style="font-size:18px"></i>Momento de reflexión</div>
+    <div class="reflexion-pregunta">
+      Revisando los criterios evaluados y su hallazgo redactado:<br><br>
+      <strong>¿Ustedes qué cambiarían en la respuesta desarrollada?</strong><br>
+      <span style="font-weight:400">Expliquen qué mejorarían en la condición y/o en la causa, y por qué consideran que ese cambio fortalecería el hallazgo.</span>
     </div>
-    <div class="arow" style="justify-content:center;margin-top:1rem">
-      <button class="btn-p" onclick="reiniciar()"><i class="ti ti-refresh" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>Volver a intentar</button>
+    <textarea class="reflexion-ta" id="ta-ref" rows="5" placeholder="Cambiaríamos... porque... En la condición mejoraríamos... En la causa agregaríamos...">${reflexion1}</textarea>
+    <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--amber-d);margin-top:4px;margin-bottom:.75rem">
+      <span id="cc-ref">0 caracteres</span>
+      <span id="ww-ref">0 palabras</span>
     </div>
+    <div class="arow">
+      <button class="btn-amber" onclick="guardarReflexion()">
+        <i class="ti ti-check" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>Guardar reflexión
+      </button>
+    </div>
+    <div id="fb-ref"></div>
   </div>`;
+
+  const ta=document.getElementById('ta-ref');
+  if(ta){ta.addEventListener('input',function(){reflexion1=this.value;updChar('cc-ref','ww-ref',this.value);});}
+  if(reflexion1)updChar('cc-ref','ww-ref',reflexion1);
 }
 
-function updChar(ccId,wwId,val){
-  const cc=document.getElementById(ccId);if(cc)cc.textContent=val.length+' caracteres';
-  const ww=document.getElementById(wwId);if(ww)ww.textContent=wc(val)+' palabras';
+function guardarReflexion(){
+  const ans=(document.getElementById('ta-ref')||{value:''}).value.trim();
+  if(ans.length<10){
+    const ta=document.getElementById('ta-ref');
+    if(ta){ta.style.borderColor='#E24B4A';setTimeout(()=>ta.style.borderColor='#EF9F27',1500);}
+    return;
+  }
+  reflexion1=ans;
+  const ta=document.getElementById('ta-ref');if(ta)ta.disabled=true;
+  document.getElementById('fb-ref').innerHTML=`
+    <div style="margin-top:.85rem;background:var(--green-l);border:0.5px solid #97C459;border-radius:var(--r-md);padding:.85rem 1rem;font-size:13px;color:var(--green-d);line-height:1.6">
+      <div style="font-weight:500;display:flex;align-items:center;gap:6px;margin-bottom:4px"><i class="ti ti-circle-check"></i>Reflexión guardada</div>
+      Tu reflexión ha sido registrada. La capacidad de identificar mejoras en el propio trabajo es una competencia clave del auditor profesional.
+    </div>
+    <div class="arow" style="margin-top:.85rem;justify-content:center">
+      <button class="btn-p" onclick="reiniciar()"><i class="ti ti-refresh" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>Volver a intentar</button>
+    </div>`;
+  $('prog-fill').style.width='100%';
+  $('prog-pct').textContent='100%';
+  $('prog-label').textContent='Completado';
+  $('pill-3').className='step-pill done';
 }
 
 function evalFase1(){
   const ans=(document.getElementById('ta1')||{value:''}).value.trim();
   if(ans.length<15){const t=document.getElementById('ta1');if(t){t.style.borderColor='#E24B4A';setTimeout(()=>t.style.borderColor='',1500);}return;}
-  respuesta1=ans;intentos1++;
+  respuesta1=ans;
   const ta=document.getElementById('ta1');if(ta)ta.disabled=true;
   const btn=document.getElementById('btn1');if(btn)btn.disabled=true;
-  const rubRes=evalRubrica(ans,RUBRICA_CONDICION);
-  const score=calcScore(rubRes);score1=score;
+  rubRes1=evalRubrica(ans,RUBRICA_CONDICION);
+  score1=calcScore(rubRes1);
   const errors=detectarErrores(ans);
-  document.getElementById('fb1').innerHTML=renderFeedback(score,rubRes,IDEAL_CONDICION,errors,1,'renderFase2()');
+  document.getElementById('fb1').innerHTML=renderFeedback(score1,rubRes1,errors,1,'renderFase2()');
 }
 
 function evalFase2(){
   const ans=(document.getElementById('ta2')||{value:''}).value.trim();
   if(ans.length<15){const t=document.getElementById('ta2');if(t){t.style.borderColor='#E24B4A';setTimeout(()=>t.style.borderColor='',1500);}return;}
-  respuesta2=ans;intentos2++;
+  respuesta2=ans;
   const ta=document.getElementById('ta2');if(ta)ta.disabled=true;
   const btn=document.getElementById('btn2');if(btn)btn.disabled=true;
-  const rubRes=evalRubrica(ans,RUBRICA_CAUSA);
-  const score=calcScore(rubRes);score2=score;
+  rubRes2=evalRubrica(ans,RUBRICA_CAUSA);
+  score2=calcScore(rubRes2);
   const errors=detectarErrores(ans);
-  document.getElementById('fb2').innerHTML=renderFeedback(score,rubRes,IDEAL_CAUSA,errors,2,'renderResumen()');
+  document.getElementById('fb2').innerHTML=renderFeedback(score2,rubRes2,errors,2,'renderFase3()');
 }
 
 function reintentar(){
@@ -453,7 +500,7 @@ function reintentar(){
     const btn=document.getElementById('btn1');if(btn)btn.disabled=false;
     updChar('cc1','ww1','');
     document.getElementById('fb1').innerHTML='';
-  }else{
+  }else if(fase===2){
     const ta=document.getElementById('ta2');if(ta){ta.disabled=false;ta.value='';}
     respuesta2='';
     const btn=document.getElementById('btn2');if(btn)btn.disabled=false;
@@ -462,8 +509,15 @@ function reintentar(){
   }
 }
 
+function updChar(ccId,wwId,val){
+  const cc=document.getElementById(ccId);if(cc)cc.textContent=val.length+' caracteres';
+  const ww=document.getElementById(wwId);if(ww)ww.textContent=wc(val)+' palabras';
+}
+
 function reiniciar(){
-  fase=1;intentos1=0;intentos2=0;score1=null;score2=null;respuesta1='';respuesta2='';
+  fase=1;score1=null;score2=null;
+  respuesta1='';respuesta2='';reflexion1='';
+  rubRes1=[];rubRes2=[];
   renderFase1();
 }
 
